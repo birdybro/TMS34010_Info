@@ -39,6 +39,12 @@ Documents and software known (or strongly suspected) to exist but not yet archiv
 - TMS34082 3D graphics library disks
 - Original TI XDS host-side software (XDS/22, XDS/510 with '34010 support if any)
 
+## Hardware clock-speed verifications
+
+- **Metal Maniax (prototype)** — `src/mame/atari/metalmx.cpp:738` instantiates the TMS34020 at `40'000'000 // Unverified`. A real-hardware crystal photo or schematic from the prototype board would let us confirm or correct.
+- **BMX Heat (prototype)** and **Police Trainer (Atari prototype)** — both are mentioned only in the `harddriv.cpp` header comment block (lines 160 and 163) and have no corresponding `GAME(...)` entry or machine config. Clock speeds therefore cannot be cited from current MAME source. A board scan or schematic would resolve them.
+- **TMS34012 in Hard Drivin' family** — the `harddriv.cpp` driver-header diagrams (lines 118–156) describe a 50 MHz "TMS34012" alongside the 50 MHz MSP TMS34010. In MAME the part is instantiated as a TMS34010-class device. A '34012-specific datasheet would clarify how the variant differs from the '34010 (it is rumored to be a customized version).
+
 ## Notes
 
 If you find any of the above, attach: source URL, date acquired, SHA256, and a short note on copyright/redistribution status before committing the binary. For items where redistribution is unclear, prefer to record a working URL and metadata in `MANIFEST.csv` rather than commit the binary.

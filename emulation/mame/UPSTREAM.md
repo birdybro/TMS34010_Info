@@ -33,7 +33,8 @@ The same core handles `TMS34010` and `TMS34020` variants via a feature flag — 
 | Midway T-unit | `src/mame/midway/midtunit.cpp` | ~137.7 KB | Mortal Kombat, MK II, NBA Jam (original), Judge Dredd prototype, Terminator 2: Judgment Day. |
 | Midway X-unit | `src/mame/midway/midxunit.cpp` | ~47.3 KB | Revolution X, NBA Jam Tournament Edition. |
 | Midway W-unit / Wolf-unit | `src/mame/midway/midwunit.cpp` | ~140.5 KB | Mortal Kombat 3, Ultimate Mortal Kombat 3, WWF WrestleMania, Open Ice, NBA Hangtime, NBA Maximum Hangtime, Rampage World Tour. |
-| Atari Hard Drivin' family | `src/mame/atari/harddriv.cpp` | ~345.9 KB | Hard Drivin', Race Drivin', S.T.U.N. Runner, Steel Talons, Hard Drivin' Compact, Race Drivin' Compact, Hard Drivin's Airborne (prototype), **Metal Maniax (prototype)**. Note: in current MAME, `metalmx.cpp` no longer exists as a separate file — the Metal Maniax prototype is documented inside `harddriv.cpp`. |
+| Atari Hard Drivin' family | `src/mame/atari/harddriv.cpp` | ~345.9 KB | Hard Drivin', Race Drivin', S.T.U.N. Runner, Steel Talons, Hard Drivin' Compact, Race Drivin' Compact, Hard Drivin's Airborne (prototype), Street Drivin' (prototype). Header text additionally mentions BMX Heat, Police Trainer, and Metal Maniax prototypes, but those are *not* `GAME(...)` entries in this file. |
+| Atari Metal Maniax | `src/mame/atari/metalmx.cpp` | ~31.0 KB | Metal Maniax (prototype) — TMS34020-driven, separate from the Hard Drivin' driver. The clock is flagged `// Unverified` upstream (line 738). An earlier note in this archive incorrectly stated that `metalmx.cpp` had been removed; verified at the pinned commit (`70725158b…`), the file still exists. |
 | Atari Hard Drivin' helpers | `src/mame/atari/harddriv.h`, `harddriv_a.cpp`, `harddriv_m.cpp` | ~25.8 / ~12.9 / ~42.3 KB | Header + audio + machine support split. |
 | Art & Magic | `src/mame/misc/artmagic.cpp` (+ `artmagic.h`, `artmagic_v.cpp`) | ~43.2 / ~3.2 / ~8.6 KB | Cheese Chase, Ultimate Tennis, Stone Ball, Shooting Star. |
 | ICE / Game Room | `src/mame/ice/lethalj.cpp` | ~71.7 KB | Lethal Justice, Egg Venture, Ripper Ribit, Chicken Farm, Crazzy Clownz. |
@@ -43,7 +44,7 @@ Sizes were captured via the GitHub Contents API at the verified commit; numbers 
 
 ## Notes
 
-- "Metal Maniax" was previously in a standalone driver `src/mame/atari/metalmx.cpp`; that file no longer exists in the master branch as of `70725158b…`. It is now covered by comments and code paths inside `harddriv.cpp`. If pinning to a much older MAME commit, expect to find the standalone file.
+- "Metal Maniax" lives in its own driver `src/mame/atari/metalmx.cpp` at the verified MAME commit (`70725158b…`); the upstream clock value is marked `// Unverified`. An earlier revision of this archive claimed the file had been removed — that was a misread; correction made.
 - Battletoads Arcade (Rare) is not in any of the above; it lives in `src/mame/rare/btoads.cpp` and also drives a TMS34010. **Verify** before adding to the arcade index.
 - AmeriDarts (Ameri Corp) — verify driver path before listing.
 - F-15 Strike Eagle (MicroProse arcade) and B.O.T.S.S. — verify driver path; both candidates for the `embedded-avionics`-adjacent or `misc` MAME tree.

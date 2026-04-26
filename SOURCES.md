@@ -99,7 +99,8 @@ These are reformatted scrapes; prefer bitsavers or TI direct.
   - `src/mame/midway/midtunit.cpp` — T-unit (MK, MK II, NBA Jam, NBA Jam TE, Judge Dredd proto)
   - `src/mame/midway/midxunit.cpp` — X-unit (Revolution X)
   - `src/mame/midway/midwunit.cpp` — Wolf-unit (MK3, UMK3, NBA Hangtime, WrestleMania, Open Ice, Rampage WT)
-  - `src/mame/atari/harddriv.cpp` (+ `harddriv.h`, `harddriv_a.cpp`, `harddriv_m.cpp`) — Hard Drivin' family + Metal Maniax (proto, '34020)
+  - `src/mame/atari/harddriv.cpp` (+ `harddriv.h`, `harddriv_a.cpp`, `harddriv_m.cpp`) — Hard Drivin' family
+  - `src/mame/atari/metalmx.cpp` — Metal Maniax (proto, '34020), separate driver at the verified commit
   - `src/mame/misc/artmagic.cpp` — Cheese Chase, Ultimate Tennis, Stone Ball, Shooting Star
   - `src/mame/ice/lethalj.cpp` — Lethal Justice, Egg Venture, Ripper Ribit, Chicken Farm, Crazzy Clownz
   - `src/mame/tch/littlerb.cpp` — Little Robin
