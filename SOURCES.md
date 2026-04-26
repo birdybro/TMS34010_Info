@@ -93,7 +93,19 @@ These are reformatted scrapes; prefer bitsavers or TI direct.
 
 ## Emulator and decompilation projects
 
-- MAME — <https://github.com/mamedev/mame>. License BSD-3 (mostly) and GPL where noted in individual files. The TMS34010 CPU core, drivers for arcade hardware that uses '34010 / '34020, and supporting infrastructure all live here. **Do not** clone as a submodule without explicit user confirmation; record upstream URL + commit hash + file paths in `emulation/mame/UPSTREAM.md`.
+- MAME — <https://github.com/mamedev/mame>. License BSD-3 (mostly) and GPL where noted in individual files. The TMS34010 CPU core, drivers for arcade hardware that uses '34010 / '34020, and supporting infrastructure all live here. **Do not** clone as a submodule without explicit user confirmation; record upstream URL + commit hash + file paths in `emulation/mame/UPSTREAM.md`. Verified HEAD as of 2026-04-26: `70725158b4e9d2e1230c0515faec754f9cee86a2`.
+- Drivers actually using TMS34010/TMS34020 in current MAME (cross-checked at the verified commit; see `hardware/arcade/ARCADE_USES.md`):
+  - `src/mame/midway/midyunit.cpp` — Williams/Midway Y-unit (NARC, Smash TV, Trog, Terminator 2, Mortal Kombat orig., Total Carnage, etc.)
+  - `src/mame/midway/midtunit.cpp` — T-unit (MK, MK II, NBA Jam, NBA Jam TE, Judge Dredd proto)
+  - `src/mame/midway/midxunit.cpp` — X-unit (Revolution X)
+  - `src/mame/midway/midwunit.cpp` — Wolf-unit (MK3, UMK3, NBA Hangtime, WrestleMania, Open Ice, Rampage WT)
+  - `src/mame/atari/harddriv.cpp` (+ `harddriv.h`, `harddriv_a.cpp`, `harddriv_m.cpp`) — Hard Drivin' family + Metal Maniax (proto, '34020)
+  - `src/mame/misc/artmagic.cpp` — Cheese Chase, Ultimate Tennis, Stone Ball, Shooting Star
+  - `src/mame/ice/lethalj.cpp` — Lethal Justice, Egg Venture, Ripper Ribit, Chicken Farm, Crazzy Clownz
+  - `src/mame/tch/littlerb.cpp` — Little Robin
+  - `src/mame/misc/coolpool.cpp` — AmeriDarts, Cool Pool, 9-Ball Shootout (TMS34010 main CPU)
+  - `src/mame/misc/micro3d.cpp` — F-15 Strike Eagle, B.O.T.S.S., Tank Battle, Super Tank Attack (MicroProse arcade)
+  - `src/mame/rare/btoads.cpp` — Battletoads Arcade (TMS34020)
 - Ghidra TMS34010 processor support — <https://github.com/NationalSecurityAgency/ghidra/issues/3990> tracks community/Sleigh work for '34010 disassembly. Capture any referenced forks or attached `.sla` files.
 
 ## Articles / historical writeups
