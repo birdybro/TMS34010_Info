@@ -2,6 +2,10 @@
 
 This repository is a **preservation and research archive** focused on the Texas Instruments TMS340 graphics processor family (TMS34010, TMS34020, and related companion parts). It is not a distribution channel for current commercial software.
 
+## Private repository — local mirroring policy
+
+This repository is **private** and intended for personal preservation/research use; it is not currently shared publicly. Within that scope, locally mirroring upstream material that lacks an explicit license (for example, the `tms34010guy/tms34010-sdk` GitHub repo, which has no `LICENSE` file) is acceptable. The `redistribution_status` column in `MANIFEST.csv` is therefore maintained as a **forward-looking flag**: it records whether each file would be safe to share if this archive were ever made public, independent of the file already being mirrored locally. Files derived from sources without an explicit license carry `redistribution_status: do-not-redistribute` (or `unclear`) so any future decision to publish the archive remains informed. If this repository's visibility ever changes, walk `MANIFEST.csv` first and act on those flags.
+
 ## Goals
 
 - Preserve historical technical documentation (datasheets, user's guides, application notes, reference cards) that is otherwise scattered across volunteer mirrors.

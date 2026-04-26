@@ -56,7 +56,11 @@ Key indexes:
 
 | File | TI doc # | Description |
 | --- | --- | --- |
-| `docs/datasheets/84292.pdf` | SPVS002C | **TMS34010 Graphics System Processor** datasheet (June 1986, revised June 1991). Pinout, electrical characteristics, register summary, instruction-set overview. |
+| `docs/datasheets/84292.pdf` | SPVS002C | **TMS34010 Graphics System Processor** datasheet (June 1986, revised June 1991). Pinout, electrical characteristics, register summary, instruction-set overview. **Primary** copy. |
+| `docs/datasheets/SPVS002A_TMS34010_Graphics_System_Processor_198707.pdf` | SPVS002A | **TMS34010 Graphics System Processor** datasheet, **earlier revision** (Jan 1986 / Rev. July 1987). Sibling of SPVS002C; useful for tracking which characteristics were finalized later. |
+| `docs/datasheets/SPVS002C_TMS34010_Graphics_System_Processor_199106_altscan.pdf` | SPVS002C | Same SPVS002C document as `84292.pdf` but a different scan/recompression. Kept for scan-quality comparison. |
+| `docs/ti-official/1988_TI_TMS34010_Users_Guide.pdf` | SPVU001A | **TMS34010 User's Guide** (1988-08, revision A). The canonical architecture/instruction reference for the '34010. **Primary** copy. |
+| `docs/ti-official/1986_SPVU001_TMS34010_Users_Guide_first_edition.pdf` | SPVU001 | **TMS34010 User's Guide first edition** (1986). Predates SPVU001A; the original first-silicon user manual. Use when comparing first-silicon vs. revised behavior. |
 | `docs/ti-official/2564006-9721_TMS34020_Users_Guide_Aug90.pdf` | 2564006-9721 | **TMS34020 User's Guide** (August 1990). Full reference for the second-generation '34020 part — architecture, instruction set, I/O registers, host/local bus, video timing. The big one (~63 MB). |
 
 ### Tools (assembler / compiler / development board)

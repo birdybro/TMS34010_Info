@@ -11,30 +11,44 @@ scans and disk images not in the bitsavers TMS340xx tree.
 - Pinned commit: `5692b4773328f49010896b7c47ada4f96bea73f8` (default branch `main`, fetched 2026-04-26)
 - License: **none stated** — the repo has no `LICENSE` file. GitHub's
   API returns `"license": null`. Per this archive's `LEGAL_NOTES.md`,
-  that means the material is treated as `copyright_status: unclear`
-  and metadata-only — files are **not** copied into this archive
-  unless redistribution is independently established.
+  files derived from this upstream are recorded with
+  `redistribution_status: do-not-redistribute` until the upstream
+  publishes an explicit license. They have, however, been **mirrored
+  locally** because this archive is private and for personal
+  preservation/research use; the `do-not-redistribute` flag is a
+  forward-looking signal for any future decision to share publicly.
 - Upstream README excerpt (verbatim): *"Most of this was previously
   hosted on bitsavers, but it was extremely hard to find and sort
   through. Spent some time renaming things, making it more SEO
   friendly and easier to find what you need. ... I believe if TI had
   access to this SDK, they would make it freely available, but they
   unfortunately have lost the archives."*
+- The full upstream README is mirrored as
+  `emulation/tms34010-sdk-README.md`.
 
 ## Methodology for this catalog
 
-1. Shallow `git clone --depth 1` of the pinned commit into a temp
-   directory.
+1. `git clone` of the pinned commit into a temp directory
+   (`/tmp/tms34010-sdk`).
 2. `sha256sum` of every file (74 files, ~486 MB on disk).
 3. Diff against `MANIFEST.csv` SHA256 column.
-4. Anything matching an existing manifest entry is recorded below as
-   "exact duplicate of bitsavers mirror, already in archive".
-5. Anything novel is listed below as "new vs. archive" with the SHA256
-   so a future pass can rehydrate from upstream if a license clarifies.
+4. Files matching an existing manifest entry are recorded below as
+   "exact duplicate of bitsavers mirror, already in archive" and are
+   **not** re-mirrored.
+5. Novel files are mirrored locally and have new `MANIFEST.csv` rows
+   pointing to both the local path and the upstream URL.
+
+Re-verification on 2026-04-26 against pinned commit reproduced the
+split: **34 byte-identical duplicates of bitsavers content, 39 novel
+files plus the upstream README**, totalling 74 files. (The earlier
+catalog reported 35/39; one entry — `Docs/SPVU027 TMS340 Graphics
+Library (1990-08).pdf` — is in fact a *different SHA256* from the
+local `software/graphics-library/spvu027.pdf` and is therefore an
+alternate scan, not a duplicate.)
 
 ## Exact duplicates of files already archived
 
-These 35 SDK files are byte-identical (same SHA256) to files already
+These 34 SDK files are byte-identical (same SHA256) to files already
 in `MANIFEST.csv`. No re-commit; the manifest is the canonical record.
 
 | SDK upstream path | SHA256 (truncated) | Already at |
@@ -74,113 +88,127 @@ in `MANIFEST.csv`. No re-commit; the manifest is the canonical record.
 | `1990-11 TMS340 Family SDK/1990-11-19 TMS340 Family Code Generation Tools (2 of 2) r5.01 rev2564062-1641.zip` | `fb199f80...` | `tools/original-disks/2564062-1642_CODE_GEN_TOOLS_r5.01_d2.zip` |
 | `1990-11 TMS340 Family SDK/1990-11-19 TIGA SDK r2.01 rev2564053-1641.jpg` | `fee56b1a...` | `tools/original-disks/2564053-1641_TIGA_SDK_r2.01.jpg` |
 
-## Files genuinely new vs. this archive (metadata-only, NOT mirrored locally)
+## Files novel vs. this archive — **mirrored locally**
 
-These 39 files exist in the SDK upstream but have no SHA256 match in
-`MANIFEST.csv`. **They have NOT been copied into the archive** because
-the upstream repo has no LICENSE file and the redistribution status is
-`unclear`. To rehydrate any of them later, fetch from the pinned
-commit using the path below; SHA256 should match.
+These 39 files (plus the upstream README) exist in the SDK upstream
+with no SHA256 match in `MANIFEST.csv`. They have been **copied into
+this archive** at the local paths shown, and full rows have been added
+to `MANIFEST.csv`. Every row carries
+`redistribution_status: do-not-redistribute` because the upstream has
+no LICENSE.
 
-### 1987-05 TMS34010 SDK (8 disk images + label scan)
+### 1987-era TMS34010 SDK (8 disk images + label scan)
 
-These are the original 1985–1987 TMS34010 SDK floppy disk images. The
-bitsavers TMS340xx tree contains the *1990* SDK (as `TMS340_Tools_199011/`)
-and the *TIGA DDK* disks, but does **not** contain these earlier 1987-era
-floppies. Genuinely novel.
+Bitsavers' TMS340xx tree contains the *1990* SDK (as
+`TMS340_Tools_199011/`) and the *TIGA DDK* disks but does **not**
+contain these earlier 1985–1987 floppies.
 
-| File | SHA256 | Notes |
+| Upstream path | Local path | SHA256 |
 | --- | --- | --- |
-| `1985-05-20 TMS34010 Assembly Language Package (1 of 4) ASM-LNK-ARCH revD 1604811-1601.img` | `3dd3fe2dd751f3b48ac53409d4c67d72a7564c3c102d3a48acd85de5942d92a9` | Floppy image (368 640 bytes = 360 KB MS-DOS); rev D, 1985-05-20 |
-| `1985-05-20 TMS34010 Assembly Language Package (2 of 4) GSPSIM-COMP revD 1604811-1602.img` | `9ba15c34b1add956a002ba1e0f22fc35be41b6e95c67a62baa1fda6a98c52244` | |
-| `1985-05-20 TMS34010 Assembly Language Package (3 of 4) GSPSIM-TIPC revD 1604811-1603.img` | `bb0454ab6e73f65b26ca69c18c8c5bfec154202ef6137662036b1d1a02650b92` | |
-| `1985-05-20 TMS34010 Assembly Language Package (4 of 4) ROM-DEMO revD 1604811-1604.img` | `5fe40c36e33073b9ce332ff23c6499405ea1f6bef24865f01561476686672115` | |
-| `1987-05-19 TMS34010 Sample Function Library Package rev2547232-1601.img` | `e929970e757abf4cbccb49b29d22c8821e86ae4925ba4a13f4610a70791cfa2d` | 360 KB; pub no. 2547232-1601 |
-| `1987-11-06 TMS34010 Simulator-C Tools-ASM Tools.img` | `3b4d2633e7722295d550b5673cd309b6997a37a84d6d75de3ba5118d60b18411` | 1.2 MB image |
-| `1987-12-03 TMS34010 Graphics Math Function Library r1.0.img` | `e1390cc7efb008785f962269286a71e791978fcecf2258e1130516562996068e` | 1.2 MB image; r1.0 |
-| `1987-12-04 TMS34010 GSP Paint.img` | `15b066507b8e9970523706782946ade8121b4f64e5c6958812cd7ae9bd1a6392` | TI's "GSP Paint" demo program |
-| `TMS34010_GDK_floppy_labels.png` | `e8fcc75358dc97f682bba74886a2bd66bc0886ea9b5bd5fe61f1c5d55d7576d1` | Composite scan of the disk labels above |
+| `1987-05 TMS34010 SDK/1985-05-20 TMS34010 Assembly Language Package (1 of 4) ASM-LNK-ARCH revD 1604811-1601.img` | `tools/original-disks/1985-05-20 TMS34010 Assembly Language Package (1 of 4) ASM-LNK-ARCH revD 1604811-1601.img` | `3dd3fe2d...` |
+| `1987-05 TMS34010 SDK/1985-05-20 TMS34010 Assembly Language Package (2 of 4) GSPSIM-COMP revD 1604811-1602.img` | `tools/original-disks/1985-05-20 TMS34010 Assembly Language Package (2 of 4) GSPSIM-COMP revD 1604811-1602.img` | `9ba15c34...` |
+| `1987-05 TMS34010 SDK/1985-05-20 TMS34010 Assembly Language Package (3 of 4) GSPSIM-TIPC revD 1604811-1603.img` | `tools/original-disks/1985-05-20 TMS34010 Assembly Language Package (3 of 4) GSPSIM-TIPC revD 1604811-1603.img` | `bb0454ab...` |
+| `1987-05 TMS34010 SDK/1985-05-20 TMS34010 Assembly Language Package (4 of 4) ROM-DEMO revD 1604811-1604.img` | `tools/original-disks/1985-05-20 TMS34010 Assembly Language Package (4 of 4) ROM-DEMO revD 1604811-1604.img` | `5fe40c36...` |
+| `1987-05 TMS34010 SDK/1987-05-19 TMS34010 Sample Function Library Package rev2547232-1601.img` | `tools/original-disks/1987-05-19 TMS34010 Sample Function Library Package rev2547232-1601.img` | `e929970e...` |
+| `1987-05 TMS34010 SDK/1987-11-06 TMS34010 Simulator-C Tools-ASM Tools.img` | `tools/original-disks/1987-11-06 TMS34010 Simulator-C Tools-ASM Tools.img` | `3b4d2633...` |
+| `1987-05 TMS34010 SDK/1987-12-03 TMS34010 Graphics Math Function Library r1.0.img` | `tools/original-disks/1987-12-03 TMS34010 Graphics Math Function Library r1.0.img` | `e1390cc7...` |
+| `1987-05 TMS34010 SDK/1987-12-04 TMS34010 GSP Paint.img` | `tools/original-disks/1987-12-04 TMS34010 GSP Paint.img` | `15b06650...` |
+| `1987-05 TMS34010 SDK/TMS34010_GDK_floppy_labels.png` | `tools/original-disks/TMS34010_GDK_floppy_labels.png` | `e8fcc753...` |
 
-### 1991-07 TIGA Promo Kit and Art Software (12 disk images/labels + 12 scans)
+### 1991-07 TIGA Promo Kit and Art Software (8 disks/labels + 14 scans)
 
 Bitsavers has `TIGA_Promo_Kit_Scans.zip` (the marketing scans, already
-mirrored as `docs/ti-related/TIGA_Promo_Kit_Scans.zip`), but this
-upstream additionally exposes the individual demo disks as `.DSK`
-images and a per-image set of higher-resolution promo scans that are
-**not** present in the bitsavers ZIP. Need to verify whether the
-contents of bitsavers' ZIP overlap with this set before deciding which
-to keep canonical.
+mirrored as `docs/ti-related/TIGA_Promo_Kit_Scans.zip`); this upstream
+additionally exposes the individual demo disks as `.DSK` images and a
+per-image set of higher-resolution promo scans not in the bitsavers
+ZIP. A future cleanup may compare contents and decide which to keep
+canonical.
 
-| File | SHA256 | Notes |
+| Upstream path | Local path | SHA256 |
 | --- | --- | --- |
-| `Disks/1991-07-18 TIGA Interface Users Guide revB r2564001.DSK` | `87985d1d3a129f195f8aa42fca536019ef7817f796a7500db4264ddcd558f9ac` | TIGA Interface User's Guide rev B disk; pub no. 2564001 |
-| `Disks/1991-07-18 TIGA Interface Users Guide revB r2564001.jpg` | `195728d4ba4a0297320d579a78e9014ffbfd0be81bad55454850aa6adce3757a` | Disk label scan |
-| `Disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Demo Disk (2 of 2) r1.1.DSK` | `109c2811fea1b607758405ef738123901c20a3e30034117062f5bd3ab8d910b2` | "Desktop Artist Demopak" |
-| `Disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Demo Disk (2 of 2) r1.1.jpg` | `82be2c148d54c6a0c677d82ea919dba184f69e2788a78b763d8aef5d39785c02` | Disk label scan |
-| `Disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Program Disk (1 of 2) r1.1.DSK` | `3868d16c88d9fbbae67bc6384538f178f6eba092c3c3e7af6df0377b5879fd54` | |
-| `Disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Program Disk (1 of 2) r1.1.jpg` | `58269d1ca932a4b01179736d8ad9a76bad8f51aba1a2dc9cf20e6da32709b6fe` | Disk label scan |
-| `Disks/TIGA Logo Bitmaps for Windows.DSK` | `83eafb9e480f1f0c47e5b8eda02cff82c097385c6d3cb060c9f5984128a84de3` | TIGA logo bitmap art (Windows-format) |
-| `Disks/TIGA Logo Bitmaps for Windows.jpg` | `dff4aeb885304a64d522cbeeccc6244b5a612d976f25d97fedab4785f20de9d1` | Disk label scan |
-| `Scans/Front Cover.jpg` | `bd60742f4c27d5efb995020a724785215d24fb7ba3a04dc701c819bb94412400` | TIGA promo kit front cover |
-| `Scans/Back Cover.jpg` | `1ffb30aea86a7631e9c7e595c24cafda665ca72a9c75ba2b4eafc3400e086050` | |
-| `Scans/Spine.jpg` | `f919654ac44a361683ccb6a2f972719560e7b47888734e9e5776de66cf693b9a` | |
-| `Scans/Disk Sleeve (Front).jpg` | `18ff094317e78397728154e8c3ee879d3fa5592360ba48cfd2383c02788d14f7` | |
-| `Scans/Disk Sleeve (Rear).jpg` | `73452582bc79a5b44b9ee06215adb350cf3a11dbbbcd5b4dc8b0098b5653587d` | |
-| `Scans/Table Card.jpg` | `cba50571426258691613d892f7287d2b3f613ac172940eed31d664947ec2bd70` | |
-| `Scans/TIGA Logo (Large).jpg` | `bddb9ee2c8478e1c1bd10e5bfb4903746c1bb98cc8debb96f5f61efd95c9b5ec` | |
-| `Scans/TIGA Demo Printout.jpg` | `f0213cd8a68d00f17b4b941da94d6a7f65c55640b11e1a36fc2157a6e18cbf2d` | |
-| `Scans/Chip Promo Picture.jpg` | `63b3d8f56675922eb609375f7d0704e5913d898e0e5b14edd76cd8a44683666d` | TI marketing photo of the chip |
-| `Scans/BYTE Award Stickers (Big).jpg` | `b2531fdd7a75ad3519c419bdbc6161ad7e67027e4696f25dce2e71f9df78254e` | "BYTE Award" stickers as found in the kit |
-| `Scans/BYTE Award Stickers (Small).jpg` | `046d3b5fae5c2dbbfa8510bdcca3b6ef7286b21706aec3cce4f291b7a2dc84af` | |
-| `Scans/Promotional Kit Pages.pdf` | `cd072d236c2131d788eca8a1305b0b7471ca785d8e48d3e291f712eede57cf9f` | Combined promo-kit pages |
-| `Scans/img354.jpg` | `b039e85dba67890576cff388ed60d208803c21ff543da226acc69cc94e1639af` | Numbered promo scan |
-| `Scans/img355.jpg` | `99d9756192114c280241781e01b430ab49e8af60103034767c19ff6a83e82942` | Numbered promo scan |
+| `1991-07 TIGA Promo Kit and Art Software/Disks/1991-07-18 TIGA Interface Users Guide revB r2564001.DSK` | `tools/original-disks/1991-07-18 TIGA Interface Users Guide revB r2564001.DSK` | `87985d1d...` |
+| `1991-07 TIGA Promo Kit and Art Software/Disks/1991-07-18 TIGA Interface Users Guide revB r2564001.jpg` | `tools/original-disks/1991-07-18 TIGA Interface Users Guide revB r2564001.jpg` | `195728d4...` |
+| `1991-07 TIGA Promo Kit and Art Software/Disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Demo Disk (2 of 2) r1.1.DSK` | `tools/original-disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Demo Disk (2 of 2) r1.1.DSK` | `109c2811...` |
+| `1991-07 TIGA Promo Kit and Art Software/Disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Demo Disk (2 of 2) r1.1.jpg` | `tools/original-disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Demo Disk (2 of 2) r1.1.jpg` | `82be2c14...` |
+| `1991-07 TIGA Promo Kit and Art Software/Disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Program Disk (1 of 2) r1.1.DSK` | `tools/original-disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Program Disk (1 of 2) r1.1.DSK` | `3868d16c...` |
+| `1991-07 TIGA Promo Kit and Art Software/Disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Program Disk (1 of 2) r1.1.jpg` | `tools/original-disks/1991 TIGA Promo Kit - Desktop Artist Demopak - Program Disk (1 of 2) r1.1.jpg` | `58269d1c...` |
+| `1991-07 TIGA Promo Kit and Art Software/Disks/TIGA Logo Bitmaps for Windows.DSK` | `tools/original-disks/TIGA Logo Bitmaps for Windows.DSK` | `83eafb9e...` |
+| `1991-07 TIGA Promo Kit and Art Software/Disks/TIGA Logo Bitmaps for Windows.jpg` | `tools/original-disks/TIGA Logo Bitmaps for Windows.jpg` | `dff4aeb8...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/Front Cover.jpg` | `tools/tiga/promo-kit-scans/Front Cover.jpg` | `bd60742f...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/Back Cover.jpg` | `tools/tiga/promo-kit-scans/Back Cover.jpg` | `1ffb30ae...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/Spine.jpg` | `tools/tiga/promo-kit-scans/Spine.jpg` | `f919654a...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/Disk Sleeve (Front).jpg` | `tools/tiga/promo-kit-scans/Disk Sleeve (Front).jpg` | `18ff0943...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/Disk Sleeve (Rear).jpg` | `tools/tiga/promo-kit-scans/Disk Sleeve (Rear).jpg` | `73452582...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/Table Card.jpg` | `tools/tiga/promo-kit-scans/Table Card.jpg` | `cba50571...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/TIGA Logo (Large).jpg` | `tools/tiga/promo-kit-scans/TIGA Logo (Large).jpg` | `bddb9ee2...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/TIGA Demo Printout.jpg` | `tools/tiga/promo-kit-scans/TIGA Demo Printout.jpg` | `f0213cd8...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/Chip Promo Picture.jpg` | `tools/tiga/promo-kit-scans/Chip Promo Picture.jpg` | `63b3d8f5...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/BYTE Award Stickers (Big).jpg` | `tools/tiga/promo-kit-scans/BYTE Award Stickers (Big).jpg` | `b2531fdd...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/BYTE Award Stickers (Small).jpg` | `tools/tiga/promo-kit-scans/BYTE Award Stickers (Small).jpg` | `046d3b5f...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/Promotional Kit Pages.pdf` | `tools/tiga/promo-kit-scans/Promotional Kit Pages.pdf` | `cd072d23...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/img354.jpg` | `tools/tiga/promo-kit-scans/img354.jpg` | `b039e85d...` |
+| `1991-07 TIGA Promo Kit and Art Software/Scans/img355.jpg` | `tools/tiga/promo-kit-scans/img355.jpg` | `99d97561...` |
 
-### Docs/ — additional manuals not in bitsavers' TMS340xx tree
+### Docs/ — additional manuals and datasheet revisions
 
-| File | SHA256 | Notes |
+| Upstream path | Local path | SHA256 |
 | --- | --- | --- |
-| `SPVU001 TMS34010 Users Guide (1986).pdf` | `55e7f28a38bce1c050585abe682e464d8d612bc65bbe95440c92ce4ffdd6bef2` | **Earlier** edition of the '34010 User's Guide (1986). Bitsavers has the 1988 SPVU001A revision; this is the 1986 first edition. Worth a follow-up to compare pagination and which features were added between revisions. |
-| `SPVS002A TMS34010 Graphics System Processor Production Data (1987-07).pdf` | `d208783b672fce799820eaace03e0811c41db19b96842b6b8b7e55c00750ceb1` | **Earlier** 1987-07 datasheet revision. The archive currently has SPVS002C (1991-06) at `docs/datasheets/84292.pdf`. SPVS002A pre-dates that. |
-| `SPVS002C TMS34010 Graphics System Processor Production Data (1991-06).pdf` | `93dd8f0dd6c2bda2f9111a9c1324321ee35f43d176edf0ddab322bbeb48e7639` | The same SPVS002C as our local `docs/datasheets/84292.pdf`, but a *different SHA256*. Means the upstream repo's PDF was rescanned / recompressed independently of the alldatasheet mirror we used. Worth comparing later to see which scan is cleaner. |
-| `SPVU018A Tiga Interface Art (1990-09).pdf` | `788421e3a7c4ee7925b3c88f529b5f8a4054074b89c0deaf083876f5da8aeef4` | **TIGA Interface Art** — a TIGA companion document not currently in the archive. Likely covers the TIGA logo / iconography conventions. Needs scope review before mirroring. |
-| `SPVU027 TMS340 Graphics Library (1990-08).pdf` | `7e17b06920b6584fcd943af8678cc10a58e3a430c203663e2636d76583796f1e` | Same SPVU027 the archive already has (`software/graphics-library/spvu027.pdf`), but again a *different SHA256* — different scan/recompression. |
+| `Docs/SPVU001 TMS34010 Users Guide (1986).pdf` | `docs/ti-official/1986_SPVU001_TMS34010_Users_Guide_first_edition.pdf` | `55e7f28a...` |
+| `Docs/SPVS002A TMS34010 Graphics System Processor Production Data (1987-07).pdf` | `docs/datasheets/SPVS002A_TMS34010_Graphics_System_Processor_198707.pdf` | `d208783b...` |
+| `Docs/SPVS002C TMS34010 Graphics System Processor Production Data (1991-06).pdf` | `docs/datasheets/SPVS002C_TMS34010_Graphics_System_Processor_199106_altscan.pdf` | `93dd8f0d...` |
+| `Docs/SPVU018A Tiga Interface Art (1990-09).pdf` | `tools/tiga/SPVU018A_TIGA_Interface_Art_199009.pdf` | `788421e3...` |
+| `Docs/SPVU027 TMS340 Graphics Library (1990-08).pdf` | `software/graphics-library/SPVU027_TMS340_Graphics_Library_199008_altscan.pdf` | `7e17b069...` |
 
-### Docs/Video Interfaces/ — TLC34074/075/076 datasheets (1995 production data)
+`SPVU001` (1986 first edition) is genuinely novel — the archive
+already had the 1988 SPVU001A revision but not the first edition.
 
-| File | SHA256 | Notes |
+`SPVS002A` (1987-07) is an earlier datasheet revision than the
+SPVS002C (1991-06) already at `docs/datasheets/84292.pdf`; both are
+now archived.
+
+`SPVS002C` and `SPVU027` from the upstream are independent
+rescans/recompressions of documents already archived. They are kept
+under `_altscan` suffixes for future scan-quality comparison rather
+than displacing the existing copies.
+
+`SPVU018A TIGA Interface Art` (Sept 1990, pub no. 2564002-9721A)
+covers TIGA logo/iconography conventions and was not previously in
+the archive.
+
+### Docs/Video Interfaces/ — TLC340xx datasheets (1995 production data)
+
+These are RAMDAC / video palette companion chips intended to pair with
+TMS34010/TMS34020 graphics processors.
+
+| Upstream path | Local path | SHA256 |
 | --- | --- | --- |
-| `XLAS056 TLC34074 Video Interface DAC Production Data (1995-05).pdf` | `01721d77fba3f828cda781ca6a8001521a80ee4bcc829d2f50b665a6a5671e27` | Newer (1995) datasheet for the TLC34074. Not in the bitsavers TMS340xx mirror. |
-| `XLAS058 TLC34075A Video Interface Palette Production Data (1995-05).pdf` | `f0814501991ef6b5c6eb9f00520f55d6b53aded03a4966bd33a737cef667e5ba` | TLC34075**A** revision (1995); we have the older `TLC34075-110FN.pdf` already. |
-| `XLAS076 TLC34076 Video Interface Palette Production Data (1995-05).pdf` | `386fbe3884311d4279ecd2bf3223460ea3888f479315d06dad1a7dac32fc2b1b` | TLC34076 (1995); supersedes the undated `TLC34076.pdf` we already have. |
+| `Docs/Video Interfaces/XLAS056 TLC34074 Video Interface DAC Production Data (1995-05).pdf` | `docs/datasheets/XLAS056_TLC34074_Video_Interface_DAC_199505.pdf` | `01721d77...` |
+| `Docs/Video Interfaces/XLAS058 TLC34075A Video Interface Palette Production Data (1995-05).pdf` | `docs/datasheets/XLAS058_TLC34075A_Video_Interface_Palette_199505.pdf` | `f0814501...` |
+| `Docs/Video Interfaces/XLAS076 TLC34076 Video Interface Palette Production Data (1995-05).pdf` | `docs/datasheets/XLAS076_TLC34076_Video_Interface_Palette_199505.pdf` | `386fbe38...` |
 
 ### Repository metadata
 
-| File | SHA256 | Notes |
+| Upstream path | Local path | SHA256 |
 | --- | --- | --- |
-| `README.md` | `f5d35e05e3eeb4ab7c910a0602d3cfd5456656657b2bd7db4fda8eeaa3fd8b87` | Upstream README (excerpted above). |
+| `README.md` | `emulation/tms34010-sdk-README.md` | `f5d35e05...` |
+
+The upstream README is mirrored under a clarifying name to avoid
+suggesting it is a top-level README of this archive.
 
 ## Recommended next actions
 
-1. **Open an issue or PR upstream asking for a LICENSE file.** The
-   author's README implies they want this preserved and freely shared
-   ("if TI had access to this SDK, they would make it freely
-   available"). A `CC0` or `Unlicense` declaration would let this
-   archive mirror the genuinely-novel files (the 1987-era SDK floppies
-   and the 1991 TIGA Promo Kit individual scans, which are the most
-   historically valuable).
+1. **Compare scan quality between the upstream rescans and the
+   existing archive copies** for SPVS002C (`84292.pdf` vs.
+   `SPVS002C_..._altscan.pdf`) and SPVU027 (`spvu027.pdf` vs.
+   `SPVU027_..._altscan.pdf`); keep whichever scan is cleaner as the
+   primary, demote the other.
 2. **Cross-check `bitsavers.../TIGA/TIGA_Promo_Kit_Scans.zip` against
-   the `1991-07 .../Scans/` set.** Likely overlap; if the upstream
-   set is a strict superset and a license is granted, the bitsavers
-   ZIP can be replaced with the higher-resolution individual files.
-3. **Add the 1987-era TMS34010 SDK floppy images to `WANTED.md`** as
-   a citation. They are not on bitsavers and are the canonical source
-   for the original 1985–1987 TMS34010 toolchain (revisions of
-   ASM/LNK/ARCH, GSPSIM, the 1987 Sample Function Library Package,
-   and the 1987 GSP Paint demo).
-4. **Compare SPVU001 (1986 first edition) to SPVU001A (1988 revision)**
+   `tools/tiga/promo-kit-scans/`.** Likely overlap; if the upstream
+   set is a strict superset, the bitsavers ZIP can be retired in
+   favour of the higher-resolution individual files.
+3. **Compare SPVU001 (1986 first edition) to SPVU001A (1988 revision)**
    to see what changed between the first-silicon manual and the second
    public revision.
-5. If the user wants to vendor the SDK as a submodule (analogous to
+4. If the user wants to vendor the SDK as a submodule (analogous to
    the proposed MAME submodule scheme), pin to commit
    `5692b4773328f49010896b7c47ada4f96bea73f8`.

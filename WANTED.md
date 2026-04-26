@@ -7,26 +7,16 @@ Documents and software known (or strongly suspected) to exist but not yet archiv
 | Pub no. | Title | Status |
 | --- | --- | --- |
 | SPVA007A | TMS34010 Applications Guide | not located |
-| SPVU001 (1st ed.) | TMS34010 User's Guide, 1986 first edition | seen-upstream-only (`tms34010guy/tms34010-sdk` Docs/, no license; see `emulation/UPSTREAM_SDK.md`) |
-| SPVS002A | TMS34010 Graphics System Processor Production Data, 1987-07 | seen-upstream-only (`tms34010guy/tms34010-sdk` Docs/, no license) |
 | SPVU007 | TMS34010 Font Library User's Guide | not located |
 | SPVU008 | TMS34010 XDS User's Guide | not located |
 | SPVU010 | TMS34010 / 8514/A Adapter Interface Emulation User's Guide | not located |
-| SPVU018A | TIGA Interface Art (1990-09) | seen-upstream-only (`tms34010guy/tms34010-sdk` Docs/, no license) |
 | SPVU028 | TMS34020 XDS User's Guide | not located |
 | SPPU016A | TMS34070 User's Guide | not located |
 | SPVU029 | TMS340 Family Assembler Support for TMS34082 | not located |
-| XLAS056 | TLC34074 Video Interface DAC Production Data (1995-05) | seen-upstream-only |
-| XLAS058 | TLC34075A Video Interface Palette Production Data (1995-05) | seen-upstream-only |
-| XLAS076 | TLC34076 Video Interface Palette Production Data (1995-05) | seen-upstream-only |
-| 1604811-1601..1604 | 1985 TMS34010 Assembly Language Package (4 disks) rev D | seen-upstream-only (`.img` floppies in `tms34010guy/tms34010-sdk`, no license) |
-| 2547232-1601 | 1987 TMS34010 Sample Function Library Package | seen-upstream-only |
-| — | 1987-11 TMS34010 Simulator + C Tools + ASM Tools (combined floppy) | seen-upstream-only |
-| — | 1987-12 TMS34010 Graphics Math Function Library r1.0 | seen-upstream-only |
-| — | 1987-12 TMS34010 GSP Paint demo program | seen-upstream-only |
-| 2564001 | 1991 TIGA Interface User's Guide rev B disk | seen-upstream-only |
 | — | TMS34082 Software Tool Kit User's Guide | not located |
 | — | TMS34082 3D graphics library disks/examples | not located |
+| — | TIGA Promo Kit Desktop Artist Demopak — Demo Disk **(1 of 2)** r1.1 | gap — only disk 2/2 was in `tms34010guy/tms34010-sdk`; disk 1/2 of the Demo set is missing. |
+| — | TIGA Promo Kit Desktop Artist Demopak — Program Disk **(2 of 2)** r1.1 | gap — only Program Disk 1/2 was in `tms34010guy/tms34010-sdk`; Program Disk 2/2 is missing. |
 
 ## Hardware schematics / board manuals
 
