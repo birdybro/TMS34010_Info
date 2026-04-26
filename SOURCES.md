@@ -74,6 +74,18 @@ Base: <https://bitsavers.trailing-edge.com/components/ti/TMS340xx/patents/>
 
 These are TI-assigned patents collected by bitsavers under the TMS340xx tree; titles/inventors not yet recorded — verify against `patents.google.com` after download.
 
+### Foundational TMS340 / VRAM patents (NOT in bitsavers' patents subdirectory)
+
+Pulled from Google Patents directly; bitsavers' patent folder happens to skip these older filings. All have been mirrored locally and are in `MANIFEST.csv`:
+
+- `US4718024` (1985-11 / 1988-01) — Asal/Guttag/Novak — "Graphics Data Processing Apparatus for Graphic Image Operations Upon Data of Independently Selectable Pitch". The canonical foundational TMS340 architecture patent (Fig. 2 = '34010 block diagram).
+- `US5333261` (1993 / 1994) — Guttag/Asal/Tebbutt/Novak — X/Y coordinate instruction (continuation in the original family).
+- `US5437011` (1994 / 1995) — Guttag/Asal/Van Aken/Tebbutt/Novak — graphics computer system (continuation in the original family).
+- `US4747081` (1983-12 / 1988-05) — Heilveil/Van Aken/Guttag/Redwine/Pinkham/Novak — Video DRAM with parallel + serial access.
+- `US4663735` (1983-12 / 1987-05) — Novak/Guttag — Random/serial access mode selection for the same VRAM.
+
+PDF source for each is `https://patentimages.storage.googleapis.com/...` (URLs recorded in `MANIFEST.csv`). US patents are public-domain works of the federal government, so `redistribution_status: public`.
+
 ## GitHub — community SDK mirror
 
 - `https://github.com/tms34010guy/tms34010-sdk` — community-maintained mirror of TI '340 SDK material. Record as upstream; dedupe by SHA256 against bitsavers before mirroring locally. Capture commit hash when first imported.
