@@ -48,6 +48,7 @@ Key indexes:
 - `SOURCES.md` — known upstream URLs (bitsavers, TI live pages, GitHub mirrors, articles), whether or not the file is yet local.
 - `WANTED.md` — documents and disks known to exist but not yet found.
 - `LEGAL_NOTES.md` — preservation/research scope, classifications, what is **not** redistributed here.
+- `emulation/UPSTREAM_SDK.md` — catalog and dedupe of the `tms34010guy/tms34010-sdk` GitHub repo (pinned commit, file-by-file SHA256 dedupe; novel files are recorded as metadata only because the upstream has no LICENSE).
 
 ## Documents currently archived
 

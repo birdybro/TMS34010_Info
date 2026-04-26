@@ -88,7 +88,7 @@ PDF source for each is `https://patentimages.storage.googleapis.com/...` (URLs r
 
 ## GitHub — community SDK mirror
 
-- `https://github.com/tms34010guy/tms34010-sdk` — community-maintained mirror of TI '340 SDK material. Record as upstream; dedupe by SHA256 against bitsavers before mirroring locally. Capture commit hash when first imported.
+- `https://github.com/tms34010guy/tms34010-sdk` — community-maintained mirror of TI '340 SDK material. **Cataloged in `emulation/UPSTREAM_SDK.md`** at pinned commit `5692b4773328f49010896b7c47ada4f96bea73f8` (fetched 2026-04-26). Of 74 files, 35 are byte-identical to existing manifest entries; 39 are genuinely novel (1987-era TMS34010 SDK floppy images, 1991 TIGA Promo Kit individual scans, an SPVU001 1986 first-edition User's Guide, an SPVS002A 1987 datasheet revision, the SPVU018A "TIGA Interface Art" doc, and three later TLC340xx datasheets). The upstream repo has **no LICENSE file**, so the novel files are recorded as metadata only and not mirrored locally.
 
 ## TI live product/lit URLs
 
