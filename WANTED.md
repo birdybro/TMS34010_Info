@@ -18,6 +18,11 @@ Documents and software known (or strongly suspected) to exist but not yet archiv
 | — | TIGA Promo Kit Desktop Artist Demopak — Demo Disk **(1 of 2)** r1.1 | gap — only disk 2/2 was in `tms34010guy/tms34010-sdk`; disk 1/2 of the Demo set is missing. |
 | — | TIGA Promo Kit Desktop Artist Demopak — Program Disk **(2 of 2)** r1.1 | gap — only Program Disk 1/2 was in `tms34010guy/tms34010-sdk`; Program Disk 2/2 is missing. |
 
+## Die shots (high-resolution originals)
+
+- **TMS34010 / TMS34020 / TMS34082B** — Antoine Bercovici's Silicon Prawn pages expose only 1600px-wide rendered JPEGs (mirrored under `hardware/silicon-die/`). The detail-page metadata indicates original Kolor-stitched scans at 13385x11159 (TMS34010), 15523x14912 (TMS34020), and (TBD) for the TMS34082B that are not served by the wiki. The high-res originals would have to be sourced directly from Antoine Bercovici / SiliconInsider (https://siliconinsider.com/).
+- **TMS34010 / TMS34020 die shots from any other decapper** (mcmaster:ti:tms34010 and mcmaster:ti:tms34020 do **not** exist on Silicon Prawn as of 2026-04-26). No die shots for TMS34061, TMS34070, TMS34012, or TMS34082 (non-B) are known.
+
 ## Hardware schematics / board manuals
 
 - TMS34010 board schematics (TI eval/dev board native KiCad / OrCAD or scanned)

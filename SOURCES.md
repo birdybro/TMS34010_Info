@@ -127,7 +127,11 @@ These are reformatted scrapes; prefer bitsavers or TI direct.
 - <https://kguttag.com/wp-content/uploads/2024/04/1992-Interview-about-the-9918.pdf> — Karl Guttag interview (1992); Guttag was a key TI graphics architect.
 - <https://www.geekdot.com/tiga-programming/> — community writeup on TIGA programming model.
 - <https://34010.endlessskye.com/> — community '34010 technical notes site.
-- <https://siliconpr0n.org/archive/doku.php?id=bercovici:ti:tms34020> — die-shot archive for '34020.
+- <https://siliconpr0n.org/archive/doku.php?id=bercovici:ti:tms34020> — die-shot archive for '34020. **Mirrored** to `hardware/silicon-die/tms34020/bercovici/` (rendered HTML page, detail page, and the 1600px JPEG; original stitch resolution 15523x14912 not exposed by the wiki).
+- <https://siliconpr0n.org/archive/doku.php?id=bercovici:ti:tms34010> — die-shot archive for '34010. **Mirrored** to `hardware/silicon-die/tms34010/bercovici/` (rendered HTML, detail page, 1600px JPEG; original 13385x11159).
+- <https://siliconpr0n.org/archive/doku.php?id=bercovici:ti:tms34082bopt> — die-shot archive for the TMS34082B FPU companion. **Mirrored** to `hardware/silicon-die/tms34082/bercovici/`. Discovered via the `tag:vendor_ti` listing (the only three TI-tagged TMS340-family die shots on Silicon Prawn). All three scans by Antoine Bercovici / SiliconInsider, license CC BY-NC 3.0.
+- <https://siliconpr0n.org/archive/doku.php?id=mcmaster:ti:tms34010> and `mcmaster:ti:tms34020` do **not** exist on Silicon Prawn (HTML "This topic does not exist yet").
+- <https://tms34020.uav.nl/> — Eric Theunissen, "Avionics and the TMS34020". **Mirrored** to `docs/articles/tms34020_uav_nl_avionics.html` plus 18 article images under `docs/articles/tms34020_uav_nl_avionics_files/`. Site was 502 on first attempt (logged in `wanted/download_failures.md`); reachable on retry 2026-04-26.
 
 Other historically relevant articles to chase (not yet sourced):
 
