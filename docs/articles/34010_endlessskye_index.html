@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>The TMS34010 Resource Page</title>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<META name="keywords" content="TMS34010,Graphics Processor,Media Cybernetics Halo,graphics kernel">
+<META name="description" content="Architecture and Applications of the TMS34010 Graphics Processor">
+<!Original content and HTML by Karl Butz, Endless Skye Software, September, 2011-2015>
+  <link rel="icon" href="/favicon.ico?v=2" type="image/x-icon" />
+
+</head>
+<body>
+<h2>34010 Retro Enthusiasts</h2>
+<p>I wrote a proprietary interface and 2D graphics library using 34010 assembler for the HALO Graphics Toolkit when I was at Media Cybernetics in the late '80s. Who could imagine that there is still so much interest amongst the retro crowd to this day?</p>
+<p>Currently I have on loan to an Erik O. in Austin TX three original 5-1/4" floppies of the 34010 SDK. They are unreadable with a standard drive but possibly recoverable using forensic tools which presumably Erik has. Still no word yet from him on recovering the files but I am going to have to get the floppies back soon so you other folks waiting for them can have a crack at them.</p>
+<p>Christian F. from Belgium has been looking for 34010/Media Cybernetics information for years so he's next in line. There are a few others who are looking for 34010 stuff too. Hang in there it's coming soon.</p>
+<p>If anyone else is interested in 34010 software or manuals feel free to email <a href="mailto:karldbutz@endlessskye.com">Karl</a>. If anyone can recover the files off the floppies I'd make that available too.</p>
+<h2>The TMS34010:Two Generations Too Soon?</h2>
+<p>
+Recently I received an out of the blue inquiry from a hobbyist requesting some information on the TMS34010. Interestingly a few days prior I had run across my design notes for the TMS34010 where I had detailed the port of the Media Cybernetics Halo graphics kernel onto the 34010 for an upcoming trade show. Talk about deja vu all over again.
+</p>
+<p>
+The TMS34010 was a fully independent processor that ran in it's own address space, a relatively small memory window being mapped into the host adress space for data transfer and control. You could program the word size from 1 to 32 bits. You could also read or write the arbitrary word size from or to an arbitrary bit address. Totally awesome! Quite an advantage in the mid-80s when pixels were smaller than bytes, and had to be read and written using shifts and bitwise logical operations. Processor speed on a high end PC AT was 10 mHz, so this provided a significant speed advantage.
+</p>
+<p>
+Even though the herculean effort to design and port the Halo graphics kernel was a success, the TMS34010 never seemed to find widespread success in the graphics card market. I heard rumors of it being used in the unglamorous niche markets of fax machines and printers, where it's bit twiddling prowess would have provided a significant benefit. So to me the TMS34010 drifted out of thought, to be relegated to that twilight of yet another technology that was just too far ahead of its time.
+</p>
+<p>
+So imagine my surprise when I heard the hobbyist was tinkering with an arcade game complete with 34010 processor on board. (Below are a closeup of the 34010 on the board and the entire arcade game board.) I've been meaning for years to transfer the 34010 compiler and other tools from the aging 5-1/4" floppies (with the gargantuan capacity of 360 KB!) Hopefully they still are readable. (I was told that VHS tapes would lose the image in a few years but I still have movies taped from HBO in 1984 that are still alive and well, so I'm optimistic.) I hope to make this page a resource for others trying to breathe life into an old 34010 system or trying to port 34010 code onto a more modern platform. I still have the 34010 programmer's manual (a fascinating architecture, a 32-bit word with Motorola like instructions and a scan line by scan line programmable palette) but whereas I may try to set up an old machine to read the floppies I can't see myself scanning the manual. Any links to a digital version of the programmer's manual would be awesome.
+</p>
+<h2>Photos</h2>
+<p><img src="mk3-detail.jpg" height="388" width="600" border="0"></p>
+<p><img src="mk3-full.jpg" height="399" width="600" border="0"></p>
+<h4>(Photos courtesy of Nicholas Caetano, September 2011.)</h4>
+<h2>Links</h2>
+<a href="https://tms34020.uav.nl/">Avionics and the TMS34020</a>
+<p>
+<a href="http://www.transputer.net/mtw/rg-750/doc/tms34010/t34010ug.pdf">http://www.transputer.net/mtw/rg-750/doc/tms34010/t34010ug.pdf<br/>
+</p>
+<a href="http://www.endlessskye.com">Home</a><br />
+</body>
+</html>

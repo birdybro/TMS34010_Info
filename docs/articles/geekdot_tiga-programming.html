@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="en-US">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="en-US">
+<![endif]-->
+<!--[if !(IE 7) & !(IE 8)]><!-->
+<html lang="en-US">
+<!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width">
+	<meta name="yandex-verification" content="d66d7c051f96805e" />
+	<title>TIGA programming - GeekDot</title>
+	<link rel="profile" href="http://gmpg.org/xfn/11">
+	<link rel="pingback" href="https://www.geekdot.com/xmlrpc.php">
+	<!--[if lt IE 9]>
+	<script src="https://www.geekdot.com/wp-content/themes/twentyfourteen/js/html5.js"></script>
+	<![endif]-->
+	<meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+<!-- Google tag (gtag.js) consent mode dataLayer added by Site Kit -->
+<script id="google_gtagjs-js-consent-mode-data-layer">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {"ad_personalization":"denied","ad_storage":"denied","ad_user_data":"denied","analytics_storage":"denied","functionality_storage":"denied","security_storage":"denied","personalization_storage":"denied","region":["AT","BE","BG","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV","MT","NL","NO","PL","PT","RO","SE","SI","SK"],"wait_for_update":500});
+window._googlesitekitConsentCategoryMap = {"statistics":["analytics_storage"],"marketing":["ad_storage","ad_user_data","ad_personalization"],"functional":["functionality_storage","security_storage"],"preferences":["personalization_storage"]};
+window._googlesitekitConsents = {"ad_personalization":"denied","ad_storage":"denied","ad_user_data":"denied","analytics_storage":"denied","functionality_storage":"denied","security_storage":"denied","personalization_storage":"denied","region":["AT","BE","BG","CH","CY","CZ","DE","DK","EE","ES","FI","FR","GB","GR","HR","HU","IE","IS","IT","LI","LT","LU","LV","MT","NL","NO","PL","PT","RO","SE","SI","SK"],"wait_for_update":500};
+</script>
+<!-- End Google tag (gtag.js) consent mode dataLayer added by Site Kit -->
+
+	<!-- This site is optimized with the Yoast SEO plugin v27.4 - https://yoast.com/product/yoast-seo-wordpress/ -->
+	<meta name="description" content="This post is about TIGA programming, i.e. how to setup a system and use the API to write your own programs for TMS340 driven graphics cards" />
+	<link rel="canonical" href="https://www.geekdot.com/tiga-programming/" />
+	<meta property="og:locale" content="en_US" />
+	<meta property="og:type" content="article" />
+	<meta property="og:title" content="TIGA programming - GeekDot" />
+	<meta property="og:description" content="This post is about TIGA programming, i.e. how to setup a system and use the API to write your own programs for TMS340 driven graphics cards" />
+	<meta property="og:url" content="https://www.geekdot.com/tiga-programming/" />
+	<meta property="og:site_name" content="GeekDot" />
+	<meta property="article:published_time" content="2017-08-03T12:35:14+00:00" />
+	<meta property="article:modified_time" content="2019-01-27T21:26:48+00:00" />
+	<meta property="og:image" content="http://www.geekdot.com/wp-content/uploads/2017/01/vivid24.jpg" />
+	<meta name="author" content="Axel" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:label1" content="Written by" />
+	<meta name="twitter:data1" content="Axel" />
+	<meta name="twitter:label2" content="Est. reading time" />
+	<meta name="twitter:data2" content="6 minutes" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https:\/\/schema.org","@graph":[{"@type":"Article","@id":"https:\/\/www.geekdot.com\/tiga-programming\/#article","isPartOf":{"@id":"https:\/\/www.geekdot.com\/tiga-programming\/"},"author":{"name":"Axel","@id":"https:\/\/www.geekdot.com\/#\/schema\/person\/d41006cc6bd9fa4ceac76a49a15a9f81"},"headline":"TIGA programming","datePublished":"2017-08-03T12:35:14+00:00","dateModified":"2019-01-27T21:26:48+00:00","mainEntityOfPage":{"@id":"https:\/\/www.geekdot.com\/tiga-programming\/"},"wordCount":1081,"commentCount":14,"image":{"@id":"https:\/\/www.geekdot.com\/tiga-programming\/#primaryimage"},"thumbnailUrl":"http:\/\/www.geekdot.com\/wp-content\/uploads\/2017\/01\/vivid24.jpg","keywords":["bgi","coding","TIGA"],"articleSection":["TIGA"],"inLanguage":"en-US","potentialAction":[{"@type":"CommentAction","name":"Comment","target":["https:\/\/www.geekdot.com\/tiga-programming\/#respond"]}]},{"@type":"WebPage","@id":"https:\/\/www.geekdot.com\/tiga-programming\/","url":"https:\/\/www.geekdot.com\/tiga-programming\/","name":"TIGA programming - GeekDot","isPartOf":{"@id":"https:\/\/www.geekdot.com\/#website"},"primaryImageOfPage":{"@id":"https:\/\/www.geekdot.com\/tiga-programming\/#primaryimage"},"image":{"@id":"https:\/\/www.geekdot.com\/tiga-programming\/#primaryimage"},"thumbnailUrl":"http:\/\/www.geekdot.com\/wp-content\/uploads\/2017\/01\/vivid24.jpg","datePublished":"2017-08-03T12:35:14+00:00","dateModified":"2019-01-27T21:26:48+00:00","author":{"@id":"https:\/\/www.geekdot.com\/#\/schema\/person\/d41006cc6bd9fa4ceac76a49a15a9f81"},"description":"This post is about TIGA programming, i.e. how to setup a system and use the API to write your own programs for TMS340 driven graphics cards","breadcrumb":{"@id":"https:\/\/www.geekdot.com\/tiga-programming\/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https:\/\/www.geekdot.com\/tiga-programming\/"]}]},{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/www.geekdot.com\/tiga-programming\/#primaryimage","url":"https:\/\/www.geekdot.com\/wp-content\/uploads\/2017\/01\/vivid24.jpg","contentUrl":"https:\/\/www.geekdot.com\/wp-content\/uploads\/2017\/01\/vivid24.jpg","width":876,"height":335},{"@type":"BreadcrumbList","@id":"https:\/\/www.geekdot.com\/tiga-programming\/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https:\/\/www.geekdot.com\/"},{"@type":"ListItem","position":2,"name":"TIGA programming"}]},{"@type":"WebSite","@id":"https:\/\/www.geekdot.com\/#website","url":"https:\/\/www.geekdot.com\/","name":"GeekDot","description":"home of real men&#039;s hardware","potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https:\/\/www.geekdot.com\/?s={search_term_string}"},"query-input":{"@type":"PropertyValueSpecification","valueRequired":true,"valueName":"search_term_string"}}],"inLanguage":"en-US"},{"@type":"Person","@id":"https:\/\/www.geekdot.com\/#\/schema\/person\/d41006cc6bd9fa4ceac76a49a15a9f81","name":"Axel","image":{"@type":"ImageObject","inLanguage":"en-US","@id":"https:\/\/secure.gravatar.com\/avatar\/7ca6dc7beab09115b639f2b831bc85a1b258830c29f4487208478f2e32bfa5d8?s=96&d=retro&r=g","url":"https:\/\/secure.gravatar.com\/avatar\/7ca6dc7beab09115b639f2b831bc85a1b258830c29f4487208478f2e32bfa5d8?s=96&d=retro&r=g","contentUrl":"https:\/\/secure.gravatar.com\/avatar\/7ca6dc7beab09115b639f2b831bc85a1b258830c29f4487208478f2e32bfa5d8?s=96&d=retro&r=g","caption":"Axel"},"description":"http:\/\/www.geekdot.com\/about-me\/","sameAs":["http:\/\/www.geekdot.com"],"url":"https:\/\/www.geekdot.com\/author\/der-axel\/"}]}</script>
+	<!-- / Yoast SEO plugin. -->
+
+
+<link rel='dns-prefetch' href='//secure.gravatar.com' />
+<link rel='dns-prefetch' href='//www.googletagmanager.com' />
+<link rel='dns-prefetch' href='//stats.wp.com' />
+
+<link rel='dns-prefetch' href='//v0.wordpress.com' />
+<link rel='dns-prefetch' href='//pagead2.googlesyndication.com' />
+<link rel="alternate" type="application/rss+xml" title="GeekDot &raquo; Feed" href="https://www.geekdot.com/feed/" />
+<link rel="alternate" type="application/rss+xml" title="GeekDot &raquo; Comments Feed" href="https://www.geekdot.com/comments/feed/" />
+<link rel="alternate" type="application/rss+xml" title="GeekDot &raquo; TIGA programming Comments Feed" href="https://www.geekdot.com/tiga-programming/feed/" />
+<link id='omgf-preload-0' rel='preload' href='//www.geekdot.com/wp-content/uploads/omgf/googlefonts/titillium-web-normal-latin-ext-400.woff2?ver=1660045462' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-1' rel='preload' href='//www.geekdot.com/wp-content/uploads/omgf/googlefonts/titillium-web-normal-latin-400.woff2?ver=1660045462' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-2' rel='preload' href='//www.geekdot.com/wp-content/uploads/omgf/googlefonts/titillium-web-normal-latin-ext-700.woff2?ver=1660045462' as='font' type='font/woff2' crossorigin />
+<link id='omgf-preload-3' rel='preload' href='//www.geekdot.com/wp-content/uploads/omgf/googlefonts/titillium-web-normal-latin-700.woff2?ver=1660045462' as='font' type='font/woff2' crossorigin />
+<link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.geekdot.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.geekdot.com%2Ftiga-programming%2F" />
+<link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.geekdot.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.geekdot.com%2Ftiga-programming%2F&#038;format=xml" />
+<style id='wp-img-auto-sizes-contain-inline-css'>
+img:is([sizes=auto i],[sizes^="auto," i]){contain-intrinsic-size:3000px 1500px}
+/*# sourceURL=wp-img-auto-sizes-contain-inline-css */
+</style>
+<link rel='stylesheet' id='twentyfourteen-jetpack-css' href='https://www.geekdot.com/wp-content/plugins/jetpack/modules/theme-tools/compat/twentyfourteen.css?ver=15.7.1' media='all' />
+<style id='wp-emoji-styles-inline-css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+/*# sourceURL=wp-emoji-styles-inline-css */
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.geekdot.com/wp-includes/css/dist/block-library/style.min.css?ver=6.9.4' media='all' />
+
+<style id='classic-theme-styles-inline-css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+/*# sourceURL=/wp-includes/css/classic-themes.min.css */
+</style>
+<link rel='stylesheet' id='metaslider-blocks-editor-css-css' href='https://www.geekdot.com/wp-content/plugins/ml-slider/admin/assets/dist/css/editor-block.css?ver=3.108.0' media='all' property='stylesheet' />
+<style id='global-styles-inline-css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #385c72;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #fff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--color--green: #e7ab0b;--wp--preset--color--dark-gray: #2b2b2b;--wp--preset--color--medium-gray: #767676;--wp--preset--color--light-gray: #f5f5f5;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgb(6,147,227) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgb(252,185,0) 0%,rgb(255,105,0) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgb(255,105,0) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgb(255, 255, 255), 6px 6px rgb(0, 0, 0);--wp--preset--shadow--crisp: 6px 6px 0px rgb(0, 0, 0);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+/*# sourceURL=global-styles-inline-css */
+</style>
+
+<link rel='stylesheet' id='bbp-default-css' href='https://www.geekdot.com/wp-content/plugins/bbpress/templates/default/css/bbpress.min.css?ver=2.6.14' media='all' />
+<link rel='stylesheet' id='cookie-law-info-css' href='https://www.geekdot.com/wp-content/plugins/cookie-law-info/legacy/public/css/cookie-law-info-public.css?ver=3.4.2' media='all' />
+<link rel='stylesheet' id='cookie-law-info-gdpr-css' href='https://www.geekdot.com/wp-content/plugins/cookie-law-info/legacy/public/css/cookie-law-info-gdpr.css?ver=3.4.2' media='all' />
+<link rel='stylesheet' id='progress_wp_br_bootstrap-css' href='https://www.geekdot.com/wp-content/plugins/progress-bar-wp/assets/css/bootstrap.css?ver=6.9.4' media='all' />
+<link rel='stylesheet' id='progr_wp_b-font-awesome-css' href='https://www.geekdot.com/wp-content/plugins/progress-bar-wp/assets/css/font-awesome/css/font-awesome.min.css?ver=6.9.4' media='all' />
+<link rel='stylesheet' id='progr_wp_jq-ae-css' href='https://www.geekdot.com/wp-content/plugins/progress-bar-wp/assets/css/meanmenu.min.css?ver=6.9.4' media='all' />
+<link rel='stylesheet' id='progr_wp_animate-ae-css' href='https://www.geekdot.com/wp-content/plugins/progress-bar-wp/assets/css/animate.min.css?ver=6.9.4' media='all' />
+<link rel='stylesheet' id='googlefonts-css' href='//www.geekdot.com/wp-content/uploads/omgf/googlefonts/googlefonts.css?ver=1660045462' media='all' />
+<link rel='stylesheet' id='twentyfourteen-lato-css' href='https://www.geekdot.com/wp-content/themes/twentyfourteen/fonts/font-lato.css?ver=20230328' media='all' />
+<link rel='stylesheet' id='genericons-css' href='https://www.geekdot.com/wp-content/plugins/jetpack/_inc/genericons/genericons/genericons.css?ver=3.1' media='all' />
+<link rel='stylesheet' id='twentyfourteen-style-css' href='https://www.geekdot.com/wp-content/themes/twentyfourteen-child/style.css?ver=20251202' media='all' />
+<link rel='stylesheet' id='twentyfourteen-block-style-css' href='https://www.geekdot.com/wp-content/themes/twentyfourteen/css/blocks.css?ver=20250715' media='all' />
+<link rel='stylesheet' id='gdatt-attachments-css' href='https://www.geekdot.com/wp-content/plugins/gd-bbpress-attachments/css/front.min.css?ver=4.9.4_b2840_free' media='all' />
+<link rel='stylesheet' id='um_modal-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/um-modal.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_ui-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/jquery-ui/jquery-ui.min.css?ver=1.13.2' media='all' />
+<link rel='stylesheet' id='um_tipsy-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/tipsy/tipsy.min.css?ver=1.0.0a' media='all' />
+<link rel='stylesheet' id='um_raty-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/raty/um-raty.min.css?ver=2.6.0' media='all' />
+<link rel='stylesheet' id='select2-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/select2/select2.min.css?ver=4.0.13' media='all' />
+<link rel='stylesheet' id='um_fileupload-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/um-fileupload.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_confirm-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/um-confirm/um-confirm.min.css?ver=1.0' media='all' />
+<link rel='stylesheet' id='um_notice-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/um-notice/um-notice.min.css?ver=1.0' media='all' />
+<link rel='stylesheet' id='um_datetime-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/pickadate/default.min.css?ver=3.6.2' media='all' />
+<link rel='stylesheet' id='um_datetime_date-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/pickadate/default.date.min.css?ver=3.6.2' media='all' />
+<link rel='stylesheet' id='um_datetime_time-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/pickadate/default.time.min.css?ver=3.6.2' media='all' />
+<link rel='stylesheet' id='um_fonticons_ii-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/legacy/fonticons/fonticons-ii.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_fonticons_fa-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/legacy/fonticons/fonticons-fa.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_fontawesome-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/um-fontawesome.min.css?ver=6.5.2' media='all' />
+<link rel='stylesheet' id='um_common-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/common.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_responsive-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/um-responsive.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_styles-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/um-styles.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_crop-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/cropper/cropper.min.css?ver=1.6.1' media='all' />
+<link rel='stylesheet' id='um_profile-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/um-profile.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_account-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/um-account.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_misc-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/um-misc.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='um_default_css-css' href='https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/css/um-old-default.min.css?ver=2.11.3' media='all' />
+<link rel='stylesheet' id='wpgdprc-front-css-css' href='https://www.geekdot.com/wp-content/plugins/wp-gdpr-compliance/Assets/css/front.css?ver=1706535185' media='all' />
+<style id='wpgdprc-front-css-inline-css'>
+:root{--wp-gdpr--bar--background-color: #000000;--wp-gdpr--bar--color: #ffffff;--wp-gdpr--button--background-color: #000000;--wp-gdpr--button--background-color--darken: #000000;--wp-gdpr--button--color: #ffffff;}
+/*# sourceURL=wpgdprc-front-css-inline-css */
+</style>
+<script src="https://www.geekdot.com/wp-includes/js/jquery/jquery.min.js?ver=3.7.1" id="jquery-core-js"></script>
+<script src="https://www.geekdot.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.4.1" id="jquery-migrate-js"></script>
+<script id="cookie-law-info-js-extra">
+var Cli_Data = {"nn_cookie_ids":[],"cookielist":[],"non_necessary_cookies":[],"ccpaEnabled":"1","ccpaRegionBased":"","ccpaBarEnabled":"","strictlyEnabled":["necessary","obligatoire"],"ccpaType":"ccpa_gdpr","js_blocking":"","custom_integration":"","triggerDomRefresh":"","secure_cookies":""};
+var cli_cookiebar_settings = {"animate_speed_hide":"500","animate_speed_show":"500","background":"#fff","border":"#444","border_on":"","button_1_button_colour":"#81d742","button_1_button_hover":"#67ac35","button_1_link_colour":"#fff","button_1_as_button":"1","button_1_new_win":"","button_2_button_colour":"#333","button_2_button_hover":"#292929","button_2_link_colour":"#444","button_2_as_button":"","button_2_hidebar":"","button_3_button_colour":"#000","button_3_button_hover":"#000000","button_3_link_colour":"#fff","button_3_as_button":"1","button_3_new_win":"","button_4_button_colour":"#bababa","button_4_button_hover":"#959595","button_4_link_colour":"#fff","button_4_as_button":"1","button_7_button_colour":"#61a229","button_7_button_hover":"#4e8221","button_7_link_colour":"#fff","button_7_as_button":"1","button_7_new_win":"","font_family":"inherit","header_fix":"","notify_animate_hide":"1","notify_animate_show":"","notify_div_id":"#cookie-law-info-bar","notify_position_horizontal":"right","notify_position_vertical":"bottom","scroll_close":"","scroll_close_reload":"","accept_close_reload":"","reject_close_reload":"","showagain_tab":"","showagain_background":"#fff","showagain_border":"#000","showagain_div_id":"#cookie-law-info-again","showagain_x_position":"100px","text":"#000","show_once_yn":"","show_once":"10000","logging_on":"","as_popup":"","popup_overlay":"1","bar_heading_text":"","cookie_bar_as":"banner","popup_showagain_position":"bottom-right","widget_position":"left"};
+var log_object = {"ajax_url":"https://www.geekdot.com/wp-admin/admin-ajax.php"};
+//# sourceURL=cookie-law-info-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/cookie-law-info/legacy/public/js/cookie-law-info-public.js?ver=3.4.2" id="cookie-law-info-js"></script>
+<script id="cookie-law-info-ccpa-js-extra">
+var ccpa_data = {"opt_out_prompt":"Do you really wish to opt out?","opt_out_confirm":"Confirm","opt_out_cancel":"Cancel"};
+//# sourceURL=cookie-law-info-ccpa-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/cookie-law-info/legacy/admin/modules/ccpa/assets/js/cookie-law-info-ccpa.js?ver=3.4.2" id="cookie-law-info-ccpa-js"></script>
+<script src="https://www.geekdot.com/wp-content/themes/twentyfourteen/js/functions.js?ver=20250729" id="twentyfourteen-script-js" defer data-wp-strategy="defer"></script>
+
+<!-- Google tag (gtag.js) snippet added by Site Kit -->
+<!-- Google Analytics snippet added by Site Kit -->
+<script src="https://www.googletagmanager.com/gtag/js?id=GT-PLHSSLV" id="google_gtagjs-js" async></script>
+<script id="google_gtagjs-js-after">
+window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}
+gtag("set","linker",{"domains":["www.geekdot.com"]});
+gtag("js", new Date());
+gtag("set", "developer_id.dZTNiMT", true);
+gtag("config", "GT-PLHSSLV");
+//# sourceURL=google_gtagjs-js-after
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/um-gdpr.min.js?ver=2.11.3" id="um-gdpr-js"></script>
+<script id="wpgdprc-front-js-js-extra">
+var wpgdprcFront = {"ajaxUrl":"https://www.geekdot.com/wp-admin/admin-ajax.php","ajaxNonce":"e8c6dbaf5d","ajaxArg":"security","pluginPrefix":"wpgdprc","blogId":"1","isMultiSite":"","locale":"en_US","showSignUpModal":"","showFormModal":"","cookieName":"wpgdprc-consent","consentVersion":"","path":"/","prefix":"wpgdprc"};
+//# sourceURL=wpgdprc-front-js-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/wp-gdpr-compliance/Assets/js/front.min.js?ver=1706535185" id="wpgdprc-front-js-js"></script>
+<link rel="https://api.w.org/" href="https://www.geekdot.com/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.geekdot.com/wp-json/wp/v2/posts/2051" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.geekdot.com/xmlrpc.php?rsd" />
+<meta name="generator" content="WordPress 6.9.4" />
+<link rel='shortlink' href='https://wp.me/p67Gl7-x5' />
+<style id="fourteen-colors" type="text/css">/* Custom Contrast Color */
+		.site:before,
+		#secondary,
+		.site-header,
+		.site-footer,
+		.menu-toggle,
+		.featured-content,
+		.featured-content .entry-header,
+		.slider-direction-nav a,
+		.ie8 .featured-content,
+		.ie8 .site:before,
+		.has-black-background-color {
+			background-color: #385c72;
+		}
+
+		.has-black-color {
+			color: #385c72;
+		}
+
+		.grid .featured-content .entry-header,
+		.ie8 .grid .featured-content .entry-header {
+			border-color: #385c72;
+		}
+
+		.slider-control-paging a:before {
+			background-color: rgba(255,255,255,.33);
+		}
+
+		.hentry .mejs-mediaelement,
+		.widget .mejs-mediaelement,
+ 		.hentry .mejs-container .mejs-controls,
+ 		.widget .mejs-container .mejs-controls {
+			background: #385c72;
+		}
+
+		/* Player controls need separation from the contrast background */
+		.primary-sidebar .mejs-controls,
+		.site-footer .mejs-controls {
+			border: 1px solid;
+		}
+		
+			.content-sidebar .widget_twentyfourteen_ephemera .widget-title:before {
+				background: #385c72;
+			}
+
+			.paging-navigation,
+			.content-sidebar .widget .widget-title {
+				border-top-color: #385c72;
+			}
+
+			.content-sidebar .widget .widget-title, 
+			.content-sidebar .widget .widget-title a,
+			.paging-navigation,
+			.paging-navigation a:hover,
+			.paging-navigation a {
+				color: #385c72;
+			}
+
+			/* Override the site title color option with an over-qualified selector, as the option is hidden. */
+			h1.site-title a {
+				color: #fff;
+			}
+		
+		.menu-toggle:active,
+		.menu-toggle:focus,
+		.menu-toggle:hover {
+			background-color: #7ca0b6;
+		}
+		/* Custom accent color. */
+		button,
+		.button,
+		.contributor-posts-link,
+		input[type="button"],
+		input[type="reset"],
+		input[type="submit"],
+		.search-toggle,
+		.hentry .mejs-controls .mejs-time-rail .mejs-time-current,
+		.widget .mejs-controls .mejs-time-rail .mejs-time-current,
+		.hentry .mejs-overlay:hover .mejs-overlay-button,
+		.widget .mejs-overlay:hover .mejs-overlay-button,
+		.widget button,
+		.widget .button,
+		.widget input[type="button"],
+		.widget input[type="reset"],
+		.widget input[type="submit"],
+		.widget_calendar tbody a,
+		.content-sidebar .widget input[type="button"],
+		.content-sidebar .widget input[type="reset"],
+		.content-sidebar .widget input[type="submit"],
+		.slider-control-paging .slider-active:before,
+		.slider-control-paging .slider-active:hover:before,
+		.slider-direction-nav a:hover,
+		.ie8 .primary-navigation ul ul,
+		.ie8 .secondary-navigation ul ul,
+		.ie8 .primary-navigation li:hover > a,
+		.ie8 .primary-navigation li.focus > a,
+		.ie8 .secondary-navigation li:hover > a,
+		.ie8 .secondary-navigation li.focus > a,
+		.wp-block-file .wp-block-file__button,
+		.wp-block-button__link,
+		.has-green-background-color {
+			background-color: #e7ab0b;
+		}
+
+		.site-navigation a:hover,
+		.is-style-outline .wp-block-button__link:not(.has-text-color),
+		.has-green-color {
+			color: #e7ab0b;
+		}
+
+		::-moz-selection {
+			background: #e7ab0b;
+		}
+
+		::selection {
+			background: #e7ab0b;
+		}
+
+		.paging-navigation .page-numbers.current {
+			border-color: #e7ab0b;
+		}
+
+		@media screen and (min-width: 782px) {
+			.primary-navigation li:hover > a,
+			.primary-navigation li.focus > a,
+			.primary-navigation ul ul {
+				background-color: #e7ab0b;
+			}
+		}
+
+		@media screen and (min-width: 1008px) {
+			.secondary-navigation li:hover > a,
+			.secondary-navigation li.focus > a,
+			.secondary-navigation ul ul {
+				background-color: #e7ab0b;
+			}
+		}
+	
+			.contributor-posts-link,
+			.button,
+			button,
+			input[type="button"],
+			input[type="reset"],
+			input[type="submit"],
+			.search-toggle:before,
+			.hentry .mejs-overlay:hover .mejs-overlay-button,
+			.widet .mejs-overlay:hover .mejs-overlay-button,
+			.widget button,
+			.widget .button,
+			.widget input[type="button"],
+			.widget input[type="reset"],
+			.widget input[type="submit"],
+			.widget_calendar tbody a,
+			.widget_calendar tbody a:hover,
+			.site-footer .widget_calendar tbody a,
+			.content-sidebar .widget input[type="button"],
+			.content-sidebar .widget input[type="reset"],
+			.content-sidebar .widget input[type="submit"],
+			button:hover,
+			button:focus,
+			.button:hover,
+			.button:focus,
+			.widget a.button:hover,
+			.widget a.button:focus,
+			.widget a.button:active,
+			.content-sidebar .widget a.button,
+			.content-sidebar .widget a.button:hover,
+			.content-sidebar .widget a.button:focus,
+			.content-sidebar .widget a.button:active,
+			.contributor-posts-link:hover,
+			.contributor-posts-link:active,
+			input[type="button"]:hover,
+			input[type="button"]:focus,
+			input[type="reset"]:hover,
+			input[type="reset"]:focus,
+			input[type="submit"]:hover,
+			input[type="submit"]:focus,
+			.slider-direction-nav a:hover:before,
+			.ie8 .primary-navigation li:hover > a,
+			.ie8 .primary-navigation li.focus > a,
+			.ie8 .secondary-navigation li:hover > a,
+			.ie8 .secondary-navigation li.focus > a,
+			.is-style-outline .wp-block-button__link:not(.has-text-color):hover,
+			.is-style-outline .wp-block-button__link:not(.has-text-color):focus,
+			.wp-block-button__link {
+				color: #2b2b2b;
+			}
+
+			@media screen and (min-width: 782px) {
+				.site-navigation li .current_page_item > a,
+				.site-navigation li .current_page_ancestor > a,
+				.site-navigation li .current-menu-item > a,
+				.site-navigation li .current-menu-ancestor > a,
+				.primary-navigation ul ul a,
+				.primary-navigation li:hover > a,
+				.primary-navigation li.focus > a,
+				.primary-navigation ul ul {
+					color: #2b2b2b;
+				}
+			}
+
+			@media screen and (min-width: 1008px) {
+				.secondary-navigation ul ul a,
+				.secondary-navigation li:hover > a,
+				.secondary-navigation li.focus > a,
+				.secondary-navigation ul ul {
+					color: #2b2b2b;
+				}
+			}
+
+			::selection {
+				color: #2b2b2b;
+			}
+
+			::-moz-selection {
+				color: #2b2b2b;
+			}
+
+			.hentry .mejs-controls .mejs-time-rail .mejs-time-loaded,
+			.widget .mejs-controls .mejs-time-rail .mejs-time-loaded {
+				background-color: #2b2b2b;
+			}
+
+		
+		/* Generated variants of custom accent color. */
+		a,
+		.content-sidebar .widget a {
+			color: #a16500;
+		}
+
+		.contributor-posts-link:hover,
+		.button:hover,
+		.button:focus,
+		.slider-control-paging a:hover:before,
+		.search-toggle:hover,
+		.search-toggle.active,
+		.search-box,
+		.widget_calendar tbody a:hover,
+		button:hover,
+		button:focus,
+		input[type="button"]:hover,
+		input[type="button"]:focus,
+		input[type="reset"]:hover,
+		input[type="reset"]:focus,
+		input[type="submit"]:hover,
+		input[type="submit"]:focus,
+		.widget button:hover,
+		.widget .button:hover,
+		.widget button:focus,
+		.widget .button:focus,
+		.widget input[type="button"]:hover,
+		.widget input[type="button"]:focus,
+		.widget input[type="reset"]:hover,
+		.widget input[type="reset"]:focus,
+		.widget input[type="submit"]:hover,
+		.widget input[type="submit"]:focus,
+		.content-sidebar .widget input[type="button"]:hover,
+		.content-sidebar .widget input[type="button"]:focus,
+		.content-sidebar .widget input[type="reset"]:hover,
+		.content-sidebar .widget input[type="reset"]:focus,
+		.content-sidebar .widget input[type="submit"]:hover,
+		.content-sidebar .widget input[type="submit"]:focus,
+		.ie8 .primary-navigation ul ul a:hover,
+		.ie8 .primary-navigation ul ul li.focus > a,
+		.ie8 .secondary-navigation ul ul a:hover,
+		.ie8 .secondary-navigation ul ul li.focus > a,
+		.wp-block-file .wp-block-file__button:hover,
+		.wp-block-file .wp-block-file__button:focus,
+		.wp-block-button__link:not(.has-text-color):hover,
+		.wp-block-button__link:not(.has-text-color):focus,
+		.is-style-outline .wp-block-button__link:not(.has-text-color):hover,
+		.is-style-outline .wp-block-button__link:not(.has-text-color):focus {
+			background-color: #ffc828;
+		}
+
+		.featured-content a:hover,
+		.featured-content .entry-title a:hover,
+		.widget a:hover,
+		.widget-title a:hover,
+		.widget_twentyfourteen_ephemera .entry-meta a:hover,
+		.hentry .mejs-controls .mejs-button button:hover,
+		.widget .mejs-controls .mejs-button button:hover,
+		.site-info a:hover,
+		.featured-content a:hover,
+		.wp-block-latest-comments_comment-meta a:hover,
+		.wp-block-latest-comments_comment-meta a:focus {
+			color: #ffc828;
+		}
+
+		a:active,
+		a:hover,
+		.entry-title a:hover,
+		.entry-meta a:hover,
+		.cat-links a:hover,
+		.entry-content .edit-link a:hover,
+		.post-navigation a:hover,
+		.image-navigation a:hover,
+		.comment-author a:hover,
+		.comment-list .pingback a:hover,
+		.comment-list .trackback a:hover,
+		.comment-metadata a:hover,
+		.comment-reply-title small a:hover,
+		.content-sidebar .widget a:hover,
+		.content-sidebar .widget .widget-title a:hover,
+		.content-sidebar .widget_twentyfourteen_ephemera .entry-meta a:hover {
+			color: #be821d;
+		}
+
+		.page-links a:hover,
+		.paging-navigation a:hover {
+			border-color: #be821d;
+		}
+
+		.entry-meta .tag-links a:hover:before {
+			border-right-color: #be821d;
+		}
+
+		.page-links a:hover,
+		.entry-meta .tag-links a:hover {
+			background-color: #be821d;
+		}
+
+		@media screen and (min-width: 782px) {
+			.primary-navigation ul ul a:hover,
+			.primary-navigation ul ul li.focus > a {
+				background-color: #ffc828;
+			}
+		}
+
+		@media screen and (min-width: 1008px) {
+			.secondary-navigation ul ul a:hover,
+			.secondary-navigation ul ul li.focus > a {
+				background-color: #ffc828;
+			}
+		}
+
+		button:active,
+		.button:active,
+		.contributor-posts-link:active,
+		input[type="button"]:active,
+		input[type="reset"]:active,
+		input[type="submit"]:active,
+		.widget input[type="button"]:active,
+		.widget input[type="reset"]:active,
+		.widget input[type="submit"]:active,
+		.content-sidebar .widget input[type="button"]:active,
+		.content-sidebar .widget input[type="reset"]:active,
+		.content-sidebar .widget input[type="submit"]:active,
+		.wp-block-file .wp-block-file__button:active,
+		.wp-block-button__link:active {
+			background-color: #ffdc3c;
+		}
+
+		.site-navigation .current_page_item > a,
+		.site-navigation .current_page_ancestor > a,
+		.site-navigation .current-menu-item > a,
+		.site-navigation .current-menu-ancestor > a {
+			color: #ffdc3c;
+		}
+	</style><meta name="generator" content="Site Kit by Google 1.177.0" /><style type='text/css' media='screen'>
+	body{ font-family:"Titillium Web", arial, sans-serif;}
+	h1{ font-family:"Titillium Web", arial, sans-serif;}
+	h2{ font-family:"Titillium Web", arial, sans-serif;}
+	h3{ font-family:"Titillium Web", arial, sans-serif;}
+	h4{ font-family:"Titillium Web", arial, sans-serif;}
+	h5{ font-family:"Titillium Web", arial, sans-serif;}
+	h6{ font-family:"Titillium Web", arial, sans-serif;}
+	p{ font-family:"Titillium Web", arial, sans-serif;}
+	li{ font-family:"Titillium Web", arial, sans-serif;}
+</style>
+<!-- fonts delivered by Wordpress Google Fonts, a plugin by Adrian3.com -->	<style>img#wpstats{display:none}</style>
+		        <script async src="https://fundingchoicesmessages.google.com/i/pub-5157310208398479?ers=1"></script><script>(function() {function signalGooglefcPresent() {if (!window.frames['googlefcPresent']) {if (document.body) {const iframe = document.createElement('iframe'); iframe.style = 'width: 0; height: 0; border: none; z-index: -1000; left: -1000px; top: -1000px;'; iframe.style.display = 'none'; iframe.name = 'googlefcPresent'; document.body.appendChild(iframe);} else {setTimeout(signalGooglefcPresent, 0);}}}signalGooglefcPresent();})();</script>
+    
+<!-- Google AdSense meta tags added by Site Kit -->
+<meta name="google-adsense-platform-account" content="ca-host-pub-2644536267352236">
+<meta name="google-adsense-platform-domain" content="sitekit.withgoogle.com">
+<!-- End Google AdSense meta tags added by Site Kit -->
+<style>.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>		<style type="text/css" id="twentyfourteen-header-css">
+				.site-title,
+		.site-description {
+			clip-path: inset(50%);
+			position: absolute;
+		}
+				</style>
+		
+<!-- Google AdSense snippet added by Site Kit -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5157310208398479&amp;host=ca-host-pub-2644536267352236" crossorigin="anonymous"></script>
+
+<!-- End Google AdSense snippet added by Site Kit -->
+<link rel="icon" href="https://www.geekdot.com/wp-content/uploads/2019/06/GeekDotAvatarBig-50x50.jpg" sizes="32x32" />
+<link rel="icon" href="https://www.geekdot.com/wp-content/uploads/2019/06/GeekDotAvatarBig.jpg" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://www.geekdot.com/wp-content/uploads/2019/06/GeekDotAvatarBig.jpg" />
+<meta name="msapplication-TileImage" content="https://www.geekdot.com/wp-content/uploads/2019/06/GeekDotAvatarBig.jpg" />
+<link rel='stylesheet' id='shariffcss-css' href='https://www.geekdot.com/wp-content/plugins/shariff/css/shariff.min.css?ver=4.6.19' media='all' />
+<link rel='stylesheet' id='gglcptch-css' href='https://www.geekdot.com/wp-content/plugins/google-captcha/css/gglcptch.css?ver=1.87' media='all' />
+
+</head>
+
+<body class="wp-singular post-template-default single single-post postid-2051 single-format-standard wp-embed-responsive wp-theme-twentyfourteen wp-child-theme-twentyfourteen-child metaslider-plugin header-image full-width singular">
+<div id="page" class="hfeed site">
+		<div id="site-header">
+		<a href="https://www.geekdot.com/" rel="home">
+			<img src="https://www.geekdot.com/wp-content/uploads/2015/05/GDlogo3.gif" width="1260" height="79" alt="GeekDot">
+		</a>
+	</div>
+	
+	<header id="masthead" class="site-header" role="banner">
+		<div class="header-main">
+			<h1 class="site-title"><a href="https://www.geekdot.com/" rel="home">GeekDot</a></h1>
+
+			<div class="search-toggle">
+				<a href="#search-container" class="screen-reader-text" aria-expanded="false" aria-controls="search-container">Search</a>
+			</div>
+
+			<nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+				<button class="menu-toggle">Primary Menu</button>
+				<a class="screen-reader-text skip-link" href="#content">Skip to content</a>
+				<div class="menu-main-container"><ul id="primary-menu" class="nav-menu"><li id="menu-item-442" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-442"><a href="https://www.geekdot.com/diy-page/">My Stuff</a>
+<ul class="sub-menu">
+	<li id="menu-item-5059" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5059"><a href="https://www.geekdot.com/atw800_2/">ATW800/2</a></li>
+	<li id="menu-item-3716" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3716"><a href="https://www.geekdot.com/numbercruncher-reloaded/">NumberCruncher Reloaded</a></li>
+	<li id="menu-item-604" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-604"><a href="https://www.geekdot.com/transputer-interfacing/">Transputer Interfacing</a>
+	<ul class="sub-menu">
+		<li id="menu-item-4497" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4497"><a href="https://www.geekdot.com/stgatw/">The STG[A]TW</a></li>
+		<li id="menu-item-4606" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4606"><a href="https://www.geekdot.com/tto68k/">Tto68k</a></li>
+		<li id="menu-item-4253" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4253"><a href="https://www.geekdot.com/t2c/">The T2C=</a></li>
+		<li id="menu-item-72" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-72"><a href="https://www.geekdot.com/category/hardware/diy-projects/diy-transputer-interfacing/t2a2/">T2A2</a></li>
+		<li id="menu-item-2825" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2825"><a href="https://www.geekdot.com/atw800-farmcard/">ATW800 Farmcard</a></li>
+		<li id="menu-item-1867" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1867"><a href="https://www.geekdot.com/imsb012-c004-replacement/">IMSB012 C004 replacement</a></li>
+		<li id="menu-item-2596" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2596"><a href="https://www.geekdot.com/rs422-differential-adapter/">RS422 Differential Adapter</a></li>
+	</ul>
+</li>
+	<li id="menu-item-4813" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4813"><a href="https://www.geekdot.com/transputer-systems/">Transputer Systems</a>
+	<ul class="sub-menu">
+		<li id="menu-item-83" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-83"><a href="https://www.geekdot.com/category/systems/tower-of-power/">Tower of Power</a></li>
+		<li id="menu-item-1641" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1641"><a href="https://www.geekdot.com/category/systems/the-cube/">The Cube</a></li>
+		<li id="menu-item-2879" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2879"><a href="https://www.geekdot.com/the-final-cube/">The final Cube</a></li>
+	</ul>
+</li>
+	<li id="menu-item-605" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-605"><a href="https://www.geekdot.com/my-own-trams/">My own TRAMs</a>
+	<ul class="sub-menu">
+		<li id="menu-item-69" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-69"><a href="https://www.geekdot.com/category/hardware/diy-projects/my-own-trams/am-b404/">AM-B404</a></li>
+		<li id="menu-item-1887" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1887"><a href="https://www.geekdot.com/category/hardware/diy-projects/my-own-trams/t2shield/">T2shield</a></li>
+		<li id="menu-item-70" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-70"><a href="https://www.geekdot.com/category/hardware/diy-projects/my-own-trams/t2i2c/">T2I2C</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1490" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1490"><a href="https://www.geekdot.com/archive/">Archive</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1491" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1491"><a href="https://www.geekdot.com/archive/7up-bbs-posts/">7up BBS posts</a></li>
+		<li id="menu-item-1494" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1494"><a href="https://www.geekdot.com/category/archive/newton-secrets/">Newton Secrets</a></li>
+		<li id="menu-item-1493" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1493"><a href="https://www.geekdot.com/category/archive/this-and-that/">This and that</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-403" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-403"><a href="https://www.geekdot.com/hardware/">By CPU</a>
+<ul class="sub-menu">
+	<li id="menu-item-430" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-430"><a href="https://www.geekdot.com/transputer/">Transputer</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1459" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1459"><a href="https://www.geekdot.com/interfacing/">Interfacing</a>
+		<ul class="sub-menu">
+			<li id="menu-item-1461" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1461"><a href="https://www.geekdot.com/category/hardware/transputer/transputer-interfacing/inmos-b004/">Inmos B004</a></li>
+			<li id="menu-item-1849" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1849"><a href="https://www.geekdot.com/category/hardware/transputer/transputer-interfacing/inmos-b008/">Inmos B008</a></li>
+			<li id="menu-item-1508" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1508"><a href="https://www.geekdot.com/category/hardware/transputer/transputer-interfacing/hema-ta2/">Hema TA2</a></li>
+			<li id="menu-item-1608" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1608"><a href="https://www.geekdot.com/category/hardware/transputer/transputer-interfacing/misc-transputer-interfacing/">Misc</a></li>
+		</ul>
+</li>
+		<li id="menu-item-75" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-75"><a href="https://www.geekdot.com/category/hardware/transputer/avm-b1/">AVM B1</a></li>
+		<li id="menu-item-76" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-76"><a href="https://www.geekdot.com/category/hardware/transputer/avm-t1/">AVM T1</a></li>
+		<li id="menu-item-78" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-78"><a href="https://www.geekdot.com/category/hardware/transputer/das-transputerbuch/">Das Transputerbuch</a></li>
+		<li id="menu-item-3891" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3891"><a href="https://www.geekdot.com/the-inmos-b020/">The Inmos B020</a></li>
+		<li id="menu-item-500" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-500"><a href="https://www.geekdot.com/parsytec/">Parsytec</a>
+		<ul class="sub-menu">
+			<li id="menu-item-503" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-503"><a href="https://www.geekdot.com/category/hardware/transputer/parsytec/supercluster/">SuperCluster</a></li>
+			<li id="menu-item-502" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-502"><a href="https://www.geekdot.com/category/hardware/transputer/parsytec/gigacluster/">GigaCluster</a></li>
+			<li id="menu-item-501" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-501"><a href="https://www.geekdot.com/category/hardware/transputer/parsytec/xplorer/">x&#8217;plorer</a></li>
+			<li id="menu-item-1831" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-1831"><a href="https://www.geekdot.com/the-ppc-parsytecs/">The PPC Parsytecs</a></li>
+		</ul>
+</li>
+		<li id="menu-item-1209" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1209"><a href="https://www.geekdot.com/transtech/">Transtech</a>
+		<ul class="sub-menu">
+			<li id="menu-item-1210" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1210"><a href="https://www.geekdot.com/category/hardware/transputer/tmb-316/">TMB 316</a></li>
+		</ul>
+</li>
+		<li id="menu-item-80" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-80"><a href="https://www.geekdot.com/category/hardware/transputer/paradico/">Paradico</a></li>
+		<li id="menu-item-82" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-82"><a href="https://www.geekdot.com/category/hardware/transputer/the-t9000/">The T9000</a></li>
+		<li id="menu-item-77" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-77"><a href="https://www.geekdot.com/category/hardware/transputer/caplin-cybernetics/">Caplin Cybernetics</a></li>
+	</ul>
+</li>
+	<li id="menu-item-433" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-433"><a href="https://www.geekdot.com/intel-80860/">Intel 80860</a>
+	<ul class="sub-menu">
+		<li id="menu-item-89" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-89"><a href="https://www.geekdot.com/category/hardware/intel-80860/dsm-860/">DSM-860</a></li>
+		<li id="menu-item-92" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-92"><a href="https://www.geekdot.com/category/hardware/intel-80860/number-smasher-860/">Number Smasher 860</a></li>
+		<li id="menu-item-90" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-90"><a href="https://www.geekdot.com/category/hardware/intel-80860/hauppauge-4860/">Hauppauge 4860</a></li>
+		<li id="menu-item-91" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-91"><a href="https://www.geekdot.com/category/hardware/intel-80860/kontron-sbc860/">Kontron SBC860</a></li>
+		<li id="menu-item-94" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-94"><a href="https://www.geekdot.com/category/hardware/intel-80860/the-spea-cards/">The SPEA cards</a></li>
+		<li id="menu-item-1697" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1697"><a href="https://www.geekdot.com/category/hardware/intel-80860/myriad-dash860/">Myriad Dash860</a></li>
+		<li id="menu-item-93" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-93"><a href="https://www.geekdot.com/category/hardware/intel-80860/olivetti-cp486/">Olivetti CP486</a></li>
+	</ul>
+</li>
+	<li id="menu-item-445" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-445"><a href="https://www.geekdot.com/mips/">MIPS</a>
+	<ul class="sub-menu">
+		<li id="menu-item-2493" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2493"><a href="https://www.geekdot.com/category/hardware/mips/rs2030/">RS2030</a></li>
+		<li id="menu-item-96" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-96"><a href="https://www.geekdot.com/category/hardware/mips/mirohighrisc-mirotiger/">miroHIGHRISC &amp; miroTIGER</a></li>
+	</ul>
+</li>
+	<li id="menu-item-4571" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4571"><a href="https://www.geekdot.com/motorola-68k/">Motorola 68k</a>
+	<ul class="sub-menu">
+		<li id="menu-item-4776" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4776"><a href="https://www.geekdot.com/atw800_2/">ATW800/2</a></li>
+		<li id="menu-item-4572" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4572"><a href="https://www.geekdot.com/stgatw/">The STG[A]TW</a></li>
+		<li id="menu-item-4605" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4605"><a href="https://www.geekdot.com/tto68k/">Tto68k</a></li>
+		<li id="menu-item-4573" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4573"><a href="https://www.geekdot.com/carrera-040-in-an-se-30/">Carrera 040 in an SE/30</a></li>
+	</ul>
+</li>
+	<li id="menu-item-444" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-444"><a href="https://www.geekdot.com/motorola-88k/">Motorola 88k</a>
+	<ul class="sub-menu">
+		<li id="menu-item-100" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-100"><a href="https://www.geekdot.com/category/hardware/motorola-88k/motorola-m8120/">Motorola M8120</a></li>
+		<li id="menu-item-101" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-101"><a href="https://www.geekdot.com/category/hardware/motorola-88k/ncd-x-terminal/">NCD X-Terminal</a></li>
+	</ul>
+</li>
+	<li id="menu-item-443" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-443"><a href="https://www.geekdot.com/miscellaneous/">Miscellaneous</a>
+	<ul class="sub-menu">
+		<li id="menu-item-2253" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2253"><a href="https://www.geekdot.com/helios-arm/">ARM eval boards and Helios</a></li>
+		<li id="menu-item-2028" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2028"><a href="https://www.geekdot.com/tiga/">TIGA</a></li>
+		<li id="menu-item-98" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-98"><a href="https://www.geekdot.com/category/hardware/misc/the-spea-panther/">The SPEA Panther</a></li>
+		<li id="menu-item-1837" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1837"><a href="https://www.geekdot.com/category/knowledge-base/chips/">Weitek 4167</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-427" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-427"><a href="https://www.geekdot.com/systems/">By System</a>
+<ul class="sub-menu">
+	<li id="menu-item-2443" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2443"><a href="https://www.geekdot.com/apple-macintosh/">Apple Macintosh</a></li>
+	<li id="menu-item-4772" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4772"><a href="https://www.geekdot.com/apple-ii/">Apple II</a>
+	<ul class="sub-menu">
+		<li id="menu-item-4773" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4773"><a href="https://www.geekdot.com/category/hardware/diy-projects/numbercruncher-reloaded/">NumberCruncher Reloaded</a></li>
+		<li id="menu-item-4774" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4774"><a href="https://www.geekdot.com/category/hardware/diy-projects/diy-transputer-interfacing/t2a2/">T2A2</a></li>
+	</ul>
+</li>
+	<li id="menu-item-4492" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4492"><a href="https://www.geekdot.com/atari-68k/">Atari 68k</a>
+	<ul class="sub-menu">
+		<li id="menu-item-4775" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4775"><a href="https://www.geekdot.com/atw800_2/">ATW800/2</a></li>
+		<li id="menu-item-5176" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-5176"><a href="https://www.geekdot.com/stgatw/">The STG[A]TW</a></li>
+		<li id="menu-item-2799" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2799"><a href="https://www.geekdot.com/atari-2080stf-a-prototype/">Atari 2080STF</a></li>
+	</ul>
+</li>
+	<li id="menu-item-4780" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4780"><a href="https://www.geekdot.com/commodore/">Commodore</a>
+	<ul class="sub-menu">
+		<li id="menu-item-4781" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4781"><a href="https://www.geekdot.com/category/hardware/diy-projects/diy-transputer-interfacing/t2c64/">T2C64</a></li>
+	</ul>
+</li>
+	<li id="menu-item-4485" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4485"><a href="https://www.geekdot.com/pc-systems/">PC Systems</a>
+	<ul class="sub-menu">
+		<li id="menu-item-2228" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2228"><a href="https://www.geekdot.com/portable-computer/">Henkelmann</a></li>
+		<li id="menu-item-4486" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4486"><a href="https://www.geekdot.com/kerberos/">Kerberos</a></li>
+	</ul>
+</li>
+	<li id="menu-item-4477" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-4477"><a href="https://www.geekdot.com/workstations/">Workstations</a>
+	<ul class="sub-menu">
+		<li id="menu-item-105" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-105"><a href="https://www.geekdot.com/category/systems/sparky2/">Sparky2</a></li>
+		<li id="menu-item-2494" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2494"><a href="https://www.geekdot.com/category/hardware/mips/rs2030/">RS2030</a></li>
+		<li id="menu-item-3890" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3890"><a href="https://www.geekdot.com/siemens-pc-x/">Siemens PC-X</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-426" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-426"><a href="https://www.geekdot.com/software/">Software</a>
+<ul class="sub-menu">
+	<li id="menu-item-103" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-103"><a href="https://www.geekdot.com/category/software/transputer-software/">Transputer Software</a></li>
+	<li id="menu-item-424" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-424"><a href="https://www.geekdot.com/helios/">Helios</a>
+	<ul class="sub-menu">
+		<li id="menu-item-451" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-451"><a href="https://www.geekdot.com/helios-the-transputer-os/">Helios – the Transputer OS</a>
+		<ul class="sub-menu">
+			<li id="menu-item-456" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-456"><a href="https://www.geekdot.com/category/helios/helios-original/">Helios (all posts)</a></li>
+		</ul>
+</li>
+		<li id="menu-item-450" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-450"><a href="https://www.geekdot.com/helios-next-generation/">Helios Next Generation</a>
+		<ul class="sub-menu">
+			<li id="menu-item-455" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-455"><a href="https://www.geekdot.com/category/helios/helios-ng/">Helios NG</a></li>
+		</ul>
+</li>
+		<li id="menu-item-2254" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2254"><a href="https://www.geekdot.com/helios-arm/">ARM eval boards and Helios</a></li>
+	</ul>
+</li>
+	<li id="menu-item-659" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-659"><a href="https://www.geekdot.com/i860-software/">i860 Software</a>
+	<ul class="sub-menu">
+		<li id="menu-item-663" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-663"><a href="https://www.geekdot.com/category/software/intel-80860-software/dsm/">DSM</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-423" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current_page_ancestor menu-item-has-children menu-item-423"><a href="https://www.geekdot.com/knowledge-base/">Knowledge Base</a>
+<ul class="sub-menu">
+	<li id="menu-item-3985" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-3985"><a href="https://www.geekdot.com/apple-know-how/">Apple Know-How</a>
+	<ul class="sub-menu">
+		<li id="menu-item-3986" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3986"><a href="https://www.geekdot.com/category/apple-68k/carrera040/">Carrera040 driver disassembly</a></li>
+		<li id="menu-item-3994" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-3994"><a href="https://www.geekdot.com/fix-quadra-power-supply/">Fixing the Quadra 950 power-supply</a></li>
+		<li id="menu-item-4479" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4479"><a href="https://www.geekdot.com/umax-tuning/">UMAX tuning</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1064" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1064"><a href="https://www.geekdot.com/knowledge-base/working-with-transputers/">Working with Transputers</a>
+	<ul class="sub-menu">
+		<li id="menu-item-468" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-468"><a href="https://www.geekdot.com/trams/">TRAMs</a>
+		<ul class="sub-menu">
+			<li id="menu-item-112" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-112"><a href="https://www.geekdot.com/category/knowledge-base/trams/inmos-trams/">INMOS TRAMs</a></li>
+			<li id="menu-item-109" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-109"><a href="https://www.geekdot.com/category/knowledge-base/trams/3rd-party-trams/">3rd party TRAMs</a></li>
+			<li id="menu-item-111" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-111"><a href="https://www.geekdot.com/category/knowledge-base/trams/htrams/">T9000 HTRAMs</a></li>
+			<li id="menu-item-110" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-110"><a href="https://www.geekdot.com/category/knowledge-base/trams/handling-trams/">Handling TRAMs</a></li>
+			<li id="menu-item-1582" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1582"><a href="https://www.geekdot.com/category/knowledge-base/trams/tram-documentation/">Misc TRAM Documentation</a></li>
+		</ul>
+</li>
+		<li id="menu-item-3465" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3465"><a href="https://www.geekdot.com/category/software/transputer-software/">Software Tools</a></li>
+	</ul>
+</li>
+	<li id="menu-item-106" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-106"><a href="https://www.geekdot.com/category/knowledge-base/eisa-bus/">EISA Bus</a></li>
+	<li id="menu-item-2037" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-2037"><a href="https://www.geekdot.com/tiga/">TIGA</a>
+	<ul class="sub-menu">
+		<li id="menu-item-4590" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4590"><a href="https://www.geekdot.com/tiga-basics/">TIGA – The basic stuff</a></li>
+		<li id="menu-item-4589" class="menu-item menu-item-type-post_type menu-item-object-post current-menu-item menu-item-4589"><a href="https://www.geekdot.com/tiga-programming/" aria-current="page">TIGA programming</a></li>
+	</ul>
+</li>
+	<li id="menu-item-2221" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-2221"><a href="https://www.geekdot.com/manufacturing-pcbs-in-china/">Manufacturing PCBs in China?</a></li>
+	<li id="menu-item-3591" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3591"><a href="https://www.geekdot.com/knowledge-base/">Everything else&#8230;</a></li>
+</ul>
+</li>
+<li id="menu-item-2100" class="menu-item menu-item-type-post_type_archive menu-item-object-forum menu-item-has-children menu-item-2100"><a href="https://www.geekdot.com/forums/">Forums</a>
+<ul class="sub-menu">
+	<li id="menu-item-3681" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3681"><a href="https://www.geekdot.com/login-2/">Login</a></li>
+	<li id="menu-item-2121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2121"><a href="https://www.geekdot.com/forum-index/">Available GeekDot forums</a></li>
+	<li id="menu-item-3732" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3732"><a href="https://www.geekdot.com/register/">Register</a></li>
+	<li id="menu-item-3692" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3692"><a href="https://www.geekdot.com/password-reset/">Password Reset</a></li>
+</ul>
+</li>
+<li id="menu-item-1405" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1405"><a href="https://www.geekdot.com/about-me/">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-2393" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy menu-item-2393"><a rel="privacy-policy" href="https://www.geekdot.com/privacy-policy/">Privacy Policy</a></li>
+	<li id="menu-item-1477" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1477"><a href="https://www.geekdot.com/category/blog/">Blog</a></li>
+	<li id="menu-item-4807" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4807"><a href="https://www.geekdot.com/archive/7up-bbs-posts/">7up BBS posts</a></li>
+	<li id="menu-item-4808" class="menu-item menu-item-type-post_type menu-item-object-post menu-item-4808"><a href="https://www.geekdot.com/newton-secrets-secret-newtons/">Newton Secrets – Secret Newtons</a></li>
+</ul>
+</li>
+</ul></div>			</nav>
+		</div>
+
+		<div id="search-container" class="search-box-wrapper hide">
+			<div class="search-box">
+				<form role="search" method="get" class="search-form" action="https://www.geekdot.com/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="search" class="search-field" placeholder="Search &hellip;" value="" name="s" />
+				</label>
+				<input type="submit" class="search-submit" value="Search" />
+			</form>			</div>
+		</div>
+	</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+			
+<article id="post-2051" class="post-2051 post type-post status-publish format-standard hentry category-tiga tag-bgi tag-coding tag-tiga">
+	
+	<header class="entry-header">
+				<div class="entry-meta">
+			<span class="cat-links"><a href="https://www.geekdot.com/category/hardware/misc/tiga/" rel="category tag">TIGA</a></span>
+		</div>
+			<h1 class="entry-title">TIGA programming</h1>
+		<div class="entry-meta">
+			<span class="entry-date"><a href="https://www.geekdot.com/tiga-programming/" rel="bookmark"><time class="entry-date" datetime="2017-08-03T14:35:14+02:00">August 3, 2017</time></a></span> <span class="byline"><span class="author vcard"><a class="url fn n" href="https://www.geekdot.com/author/der-axel/" rel="author">Axel</a></span></span>			<span class="comments-link"><a href="https://www.geekdot.com/tiga-programming/#comments">14 Comments</a></span>
+						</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>After we talked about the basics of the TIGA standard<a href="https://www.geekdot.com/tiga-basics/"> in the previous post</a>, we&#8217;re now  trying to do some TIGA programming&#8230; (mind the absence of the word &#8220;useful&#8221;  😉 )</p>
+<p>I can&#8217;t stress this enough: Compared to even the earliest 3D accelerators TIGA wasn&#8217;t fast. Actually it&#8217;s not meant to be a 3D accelerator at all, it&#8217;s a 2D accelerator which tried to cope with the slow ISA bus speed. With the arrival of VL-bus and then PCI, TIGA hadn&#8217;t had a chance &#8211; even with a TMS34082 FPU it reached a max of  160,000 polygons/sec and 25,000 shaded polygons/sec &#8211; and there&#8217;s no real support for textures. Fun fact: An original PlayStation (1, that is) did 180,000 textured and lighted polygons/sec&#8230;<br />
+Ah, and before you ask: No, there was no native Linux X11 support ever. There were two X11 servers: MetroLink offered a &#8220;stub&#8221; which translated X-call on the host to TIGA which ran on the card. And there was a DOS(!) X11 server from AGE Logic. That one ran solely inside the cards RAM, ignored TIGA completely and its speed was comparable to a Sparc 1 or Personal Iris  😕 The upside was, that was also the case on a slow i386/25 which was still usable running several tasks. So a lot of work was offloaded to the TMS340&#8230; OTOH you could invest that money in a i486 and a simple ET4000 to get the same responsiveness and got more CPU-Ooomp on top.</p>
+<h3>Demos</h3>
+<p>Anyhow, to have a quick start in TIGA programming, let&#8217;s do some demos&#8230; but before we start, make sure you can tick <span style="text-decoration: underline;">every point</span> on this list:</p>
+<ul>
+<li>You&#8217;ll need a running DOS (&gt;= v3.2) system</li>
+<li>Obviously a TIGA graphics card in an (E)ISA slot &#8211; VMs won&#8217;t take you far here.</li>
+<li>A successfully loaded CD and GM (what&#8217;s that? <a href="https://www.geekdot.com/tiga-basics/">Read the 1st TIGA post over here!</a>)</li>
+<li>A decent C compiler &#8211; I use Borland C (Turbo C v2 is fine, too) for that</li>
+<li>The <a href="http://www.ti.com/lit/ug/spvu015c/spvu015c.pdf" target="_blank" rel="noopener">API documentation</a> PDF from TI (aka &#8220;Interface Users Guide&#8221;)</li>
+</ul>
+<p>&#8230;and the libraries. Those came in the so-called DDK (Drive Development Kit, <a href="https://www.geekdot.com/uploads/files/TIGA/TIGA_DDK.zip" target="_blank" rel="noopener">download it here</a>), which was meant to develop drivers on the DOS side of things but can also be used to write some code making use of the insane TMS340 powers 😉<br />
+This DDK contains some (thin) documentation of how to set-up your compiler and the important libraries as well as the include files.<br />
+Just unzip the archive to some place you can remember &#8211; I used <code>C:\TIGA</code> on my box.</p>
+<h4>Setup</h4>
+<p>There are some things to be done in the Borland/Turbo C IDE before you can compile code with the DDK.</p>
+<p><strong>1.</strong> Add the directory path-name of where the TIGA include files are located in the Options/Directory menu. e.g.:</p>
+<p><code>Include directories: C:\TURBOC\INCLUDE; C:\TIGA\INCLUDE</code></p>
+<p><strong>2.</strong> Add the directory path-name of where the TIGA Application Interface Library files are located in the Options/Directory menu, e.g.:</p>
+<p><code>Library directories: C:\TURBOC\LIB; C:\TIGA\LIBS</code></p>
+<p><strong>3.</strong> Specify the TIGA Application Interface library in the Project-Make<br />
+file. Simply add a line &#8220;AI.LIB&#8221; into your Project-Make file. No<br />
+directory needs to be specified since the path name was added to the Options/Directory menu as described above.</p>
+<p>If you prefer to use the command-line it&#8217;s most convenient to add the paths in the call. E.g. building demo.c would result in this call:</p>
+<p><code>tcc -Ic:\tiga\include -Lc:\tiga\libs -ms demo.c ai.lib</code></p>
+<h4>The code</h4>
+<p>Ok, so your dev-system is all set. The TI documentation is pretty good and, well, the only one you can still find these days. So make sure you gave it at least a quick glance-through. By the way, we&#8217;re only doing TIGA v2.x stuff&#8230; the DDK is not v1.0 compatible.</p>
+<p>Have a look at<em> Chapter 3.4.</em> (PDF page 45), it gives a good intro how a basic TIGA application setup looks like. Basically that&#8217;s:</p>
+<ul style="list-style-type: square;">
+<li>First check for a Communication Driver (CD) and then open a connection to it</li>
+<li>Do your thing</li>
+<li>Properly close the CD</li>
+<li>exit(0);</li>
+</ul>
+<p>The opening and closing of the CD are wrapped into the<code> init_tiga()</code> and <code>term_tiga()</code> functions, so I&#8217;ll use those in my samples, too. So here&#8217;s a rudimentary example without the aiding functions and #includes needed. It&#8217;s drawing a blue, solid filled rectangle, half the size of the screen, centered in the screen:</p>
+<pre>init_tiga(1);                       /* initialize TIGA*/
+
+get_config(&amp;config);                /* Get info on current mode */
+width = config.mode.disp_hres &gt;&gt; 1; /* Width 1/2 screen width */
+height = config.mode.disp_vres &gt;&gt; 1; /* Height 1/2 screen height */
+xleft = width &gt;&gt; 1;                  /* Center rect in middle */
+ytop = height &gt;&gt; 1;                 /* of screen */
+set_fcolor(BLUE);                   /* Set foreground color */
+fill_rect(width,height,xleft,ytop); /* Fill the rectangle */
+
+term_tiga();                        /* Properly terminate TIGA */</pre>
+<p>Pretty straightforward, huh?</p>
+<p>So without further ado, just do something more impressive: <strong>Animation</strong>!<br />
+Well, don&#8217;t wet your pants, it&#8217;s just a spinning wire-frame cube, but hey! That was quite something back in 1990 😉 It also shows the usage of<em> extended primitives</em>, i.e. drawing functions which might needed to be loaded onto your TIGA board first (depending on model)<br />
+The code is a bit longer, <a href="https://www.geekdot.com/uploads/files/TIGA/tiga_cube.zip" target="_blank" rel="noopener">so here&#8217;s the ZIP archive</a>, which includes a TurboC project file for your convenience, too.</p>
+<p>As soon as I figured out, how to do decent screenshots from the TIGA frambuffer, I&#8217;ll post a piccy here.</p>
+<h3>BGI Driver</h3>
+<p>Sounds like a strange thing, but might be handy at times if you want to port your brilliant BGI application fast. And well, that&#8217;s what the BGI was meant for, right?<br />
+The driver was written in 1990 by &#8216;TSS Rolf Bartz&#8217; and is most likely abandonware&#8230;</p>
+<p>So <a href="https://www.geekdot.com/uploads/files/TIGA/BGI_TIGA.zip" target="_blank" rel="noopener">this BGI &#8216;driver&#8217;</a> or better called a wrapper will translate BGI calls into TIGA&#8230; of course there are some limitations in speed.<br />
+Also out-of-the-box all functions use the BGI maximum of 256 colors but up to the max. resolution your TIGA card provides (well,16384&#215;16384 is the limit ;-)).</p>
+<p>That said, there&#8217;s a <span style="text-decoration: underline;">very good readme</span> included (<strong>read it!</strong>) which not only explains how to use the driver but also tells you more about the enhancements Rolf ingeniously added:</p>
+<ul>
+<li>There are calls for circles/ellipsoids to bypass the emulation of some calls and use genuine TIGA calls &#8211; that should speed up things quite well.</li>
+<li>FillPoly uses the native TIGA call if there&#8217;s enough RAM for a workspace</li>
+<li>He patched SetWriteMode so that you can use the full 24-bit TIGA color palette.</li>
+</ul>
+<p>Again: This is a work-around and should not used for new projects.<br />
+If you successfully coded some demos, please let me know!</p>
+<h3>An odd end&#8230;</h3>
+<p>Finally, I&#8217;d like to share some heavy stuff: <a href="http://amiga.resource.cx/exp/vivid24" target="_blank" rel="noopener noreferrer">The Digital Micronics Vivid 24</a>.</p>
+<p><a href="https://www.geekdot.com/wp-content/uploads/2017/01/vivid24.jpg"><img fetchpriority="high" decoding="async" class="alignnone size-full wp-image-2038" src="https://www.geekdot.com/wp-content/uploads/2017/01/vivid24.jpg" alt="" width="876" height="335" srcset="https://www.geekdot.com/wp-content/uploads/2017/01/vivid24.jpg 876w, https://www.geekdot.com/wp-content/uploads/2017/01/vivid24-300x115.jpg 300w, https://www.geekdot.com/wp-content/uploads/2017/01/vivid24-768x294.jpg 768w" sizes="(max-width: 876px) 100vw, 876px" /></a></p>
+<p>Yes, it&#8217;s an AMIGA Zorro III card, but at heart it&#8217;s TIGA&#8230; to the max! TMS34020 40MHz, two (2!) 34082 FPUs can be added, max. 8MB RAM and 16MB(!) VRAM&#8230; that&#8217;s some serious TI-o-rama. In 1992 this beast costs nearly 3000US$   😯</p>
+<div class="shariff shariff-align-left shariff-widget-align-left"><ul class="shariff-buttons theme-default orientation-horizontal buttonsize-small"><li class="shariff-button twitter shariff-nocustomcolor" style="background-color:#595959"><a href="https://twitter.com/share?url=https%3A%2F%2Fwww.geekdot.com%2Ftiga-programming%2F&text=TIGA%20programming" title="Share on X" aria-label="Share on X" role="button" rel="noopener nofollow" class="shariff-link" style="; background-color:#000; color:#fff" target="_blank"><span class="shariff-icon" style=""><svg width="32px" height="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#000" d="M14.258 10.152L23.176 0h-2.113l-7.747 8.813L7.133 0H0l9.352 13.328L0 23.973h2.113l8.176-9.309 6.531 9.309h7.133zm-2.895 3.293l-.949-1.328L2.875 1.56h3.246l6.086 8.523.945 1.328 7.91 11.078h-3.246zm0 0"/></svg></span><span class="shariff-text">share</span>&nbsp;</a></li><li class="shariff-button facebook shariff-nocustomcolor" style="background-color:#4273c8"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.geekdot.com%2Ftiga-programming%2F" title="Share on Facebook" aria-label="Share on Facebook" role="button" rel="nofollow" class="shariff-link" style="; background-color:#3b5998; color:#fff" target="_blank"><span class="shariff-icon" style=""><svg width="32px" height="20px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 32"><path fill="#3b5998" d="M17.1 0.2v4.7h-2.8q-1.5 0-2.1 0.6t-0.5 1.9v3.4h5.2l-0.7 5.3h-4.5v13.6h-5.5v-13.6h-4.5v-5.3h4.5v-3.9q0-3.3 1.9-5.2t5-1.8q2.6 0 4.1 0.2z"/></svg></span><span class="shariff-text">share</span>&nbsp;</a></li></ul></div>	</div><!-- .entry-content -->
+	
+	<footer class="entry-meta"><span class="tag-links"><a href="https://www.geekdot.com/tag/bgi/" rel="tag">bgi</a><a href="https://www.geekdot.com/tag/coding/" rel="tag">coding</a><a href="https://www.geekdot.com/tag/tiga/" rel="tag">TIGA</a></span></footer></article><!-- #post-2051 -->
+	<nav class="navigation post-navigation" role="navigation">
+		<h1 class="screen-reader-text">Post navigation</h1>
+		<div class="nav-links">
+			<a href="https://www.geekdot.com/tiga-basics/" rel="prev"><span class="meta-nav">Previous Post in this category</span>TIGA &#8211; The basic stuff</a>		</div><!-- .nav-links -->
+	</nav><!-- .navigation -->
+	
+<div id="comments" class="comments-area">
+
+	
+	<h2 class="comments-title">
+		14 thoughts on &ldquo;TIGA programming&rdquo;	</h2>
+
+		
+	<ol class="comment-list">
+				<li id="comment-6157" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-6157" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/d240d89af2f9572fa18ec87e0134ebac19152f3677f5139395b2725942071b2b?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/d240d89af2f9572fa18ec87e0134ebac19152f3677f5139395b2725942071b2b?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' decoding='async'/>						<b class="fn">Mike</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6157"><time datetime="2020-12-24T17:04:56+01:00">December 24, 2020 at 17:04</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Looking for a way to convert old TIGA format bitmap fonts (dumped from ROM) back into something a more modern PC can use. thoughts?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6157" data-commentid="6157" data-postid="2051" data-belowelement="div-comment-6157" data-respondelement="respond" data-replyto="Reply to Mike" aria-label="Reply to Mike">Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-6244" class="comment odd alt depth-2 parent">
+			<article id="div-comment-6244" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' decoding='async'/>						<b class="fn"><a href="https://gitlab.com/FarmerPotato" class="url" rel="ugc external nofollow">Erik Olson</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6244"><time datetime="2021-07-01T21:50:20+02:00">July 1, 2021 at 21:50</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I just found a TMS34010 Font Library User’s Guide showing many TI fonts such as Houston, Dallas, and Luckenbach. Are these preserved somewhere? I looked in the zip files on bitsavers.org and in the drive kit here. </p>
+<p>I’d like to work with the font files and convert them to various formats (including TI Artist for the TI-99/4A)</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6244" data-commentid="6244" data-postid="2051" data-belowelement="div-comment-6244" data-respondelement="respond" data-replyto="Reply to Erik Olson" aria-label="Reply to Erik Olson">Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-6245" class="comment byuser comment-author-der-axel bypostauthor even depth-3 parent">
+			<article id="div-comment-6245" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" class="gravatar avatar avatar-34 um-avatar um-avatar-default" width="34" height="34" alt="Axel" data-default="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" onerror="if ( ! this.getAttribute('data-load-error') ){ this.setAttribute('data-load-error', '1');this.setAttribute('src', this.getAttribute('data-default'));}" loading="lazy" />						<b class="fn"><a href="https://www.geekdot.com/user/akesemu/">Axel</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6245"><time datetime="2021-07-02T10:10:31+02:00">July 2, 2021 at 10:10</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I don&#8217;t have anything more than what&#8217;s available on this post, sorry.<br />
+TIGA stuff disappeared very fast. Much faster than most other vintage hard/software.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6245" data-commentid="6245" data-postid="2051" data-belowelement="div-comment-6245" data-respondelement="respond" data-replyto="Reply to Axel" aria-label="Reply to Axel">Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-6246" class="comment odd alt depth-4">
+			<article id="div-comment-6246" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' loading='lazy' decoding='async'/>						<b class="fn">Erik Olson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6246"><time datetime="2021-07-02T18:49:07+02:00">July 2, 2021 at 18:49</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>That’s too bad. </p>
+<p>I spent two days in the Texas Instruments archive at SMU this week. This is a massive, official corporate archive of all kinds of material. </p>
+<p>There are perhaps 50 boxes of data books, among them two  boxes of TMS320 up to the C20, and 340C10. Many are not on Bitsavers—I’ll compile a list. </p>
+<p>I read a lot of the 34010 programmers book and 34070 book.  I do not remember seeing any 34076, or a selection guide for graphics chips, alas. </p>
+<p>I discovered the 34010 Font Library Users Guide and now I am obsessed with finding those fonts. (Bitmap, sizes 9 to 56 points variously).</p>
+<p>In the SDK from Bitsavers, I see the Roman fonts of many sizes, and the Corpus Christi in one size for 80 col text. That’s all. </p>
+<p>I do not know of any software in the archive, but I forgot to ask if it would be stored separately. </p>
+<p>I did not search marketing or sales material for the 340, but it is likely there. </p>
+<p>It’s possible there are engineering folders for the 340 but I’m not hopeful. I only saw complete engineering documents (by the designer) for speech chips.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6246" data-commentid="6246" data-postid="2051" data-belowelement="div-comment-6246" data-respondelement="respond" data-replyto="Reply to Erik Olson" aria-label="Reply to Erik Olson">Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-6247" class="comment even depth-2 parent">
+			<article id="div-comment-6247" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' loading='lazy' decoding='async'/>						<b class="fn">Erik Olson</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6247"><time datetime="2021-07-02T18:52:41+02:00">July 2, 2021 at 18:52</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hi Mike,</p>
+<p>I would like to work with the TIGA fonts. I decided this week to write a converter and test it on Roman and Corpus Christi fonts. That’s all I’ve been able to find. Would you be willing to share your ROM dump?</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6247" data-commentid="6247" data-postid="2051" data-belowelement="div-comment-6247" data-respondelement="respond" data-replyto="Reply to Erik Olson" aria-label="Reply to Erik Olson">Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-6250" class="comment byuser comment-author-der-axel bypostauthor odd alt depth-3">
+			<article id="div-comment-6250" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" class="gravatar avatar avatar-34 um-avatar um-avatar-default" width="34" height="34" alt="Axel" data-default="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" onerror="if ( ! this.getAttribute('data-load-error') ){ this.setAttribute('data-load-error', '1');this.setAttribute('src', this.getAttribute('data-default'));}" loading="lazy" />						<b class="fn"><a href="https://www.geekdot.com/user/akesemu/">Axel</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6250"><time datetime="2021-07-05T09:04:47+02:00">July 5, 2021 at 9:04</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Which ROM? IMHO there aren&#8217;t any fonts in the on-board ROMs&#8230;</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6250" data-commentid="6250" data-postid="2051" data-belowelement="div-comment-6250" data-respondelement="respond" data-replyto="Reply to Axel" aria-label="Reply to Axel">Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-6258" class="comment even depth-2">
+			<article id="div-comment-6258" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' loading='lazy' decoding='async'/>						<b class="fn"><a href="https://gitlab.com/FarmerPotato/tms340fonts" class="url" rel="ugc external nofollow">Erik Olson</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6258"><time datetime="2021-07-29T16:31:56+02:00">July 29, 2021 at 16:31</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I&#8217;ve written a C utility to translate FNT files to BMP.  It works on both 1984 and 1987 FNT files (magic numbers $9000 and $8040.)  </p>
+<p>I found all of the Font Library fonts on the various disk images in bitsavers.org. </p>
+<p>See <a href="https://gitlab.com/FarmerPotato/tms340fonts" rel="nofollow ugc">https://gitlab.com/FarmerPotato/tms340fonts</a></p>
+<p>Outputs are ready to view,  in the BMP/ subdirectory.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6258" data-commentid="6258" data-postid="2051" data-belowelement="div-comment-6258" data-respondelement="respond" data-replyto="Reply to Erik Olson" aria-label="Reply to Erik Olson">Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+		<li id="comment-6259" class="comment odd alt depth-2">
+			<article id="div-comment-6259" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/67777e842bf3917077610604ee18b7d54a98f61fb1662f0c09cb54066479114c?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' loading='lazy' decoding='async'/>						<b class="fn"><a href="https://gitlab.com/FarmerPotato/tms340fonts" class="url" rel="ugc external nofollow">Erik Olson</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6259"><time datetime="2021-07-29T16:35:40+02:00">July 29, 2021 at 16:35</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Mike, See my utility fnt2bmp.  I think you can extract the FNT files from the ROM. Each font begins with hex $9000 or $8040. If you send me a whole ROM dump, I&#8217;ll automate that process.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6259" data-commentid="6259" data-postid="2051" data-belowelement="div-comment-6259" data-respondelement="respond" data-replyto="Reply to Erik Olson" aria-label="Reply to Erik Olson">Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-6815" class="comment even thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-6815" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/6cc41e9145c08c20337712bf7d12e03be86e9b20a2642ff0bd7fc8485f0f8b59?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/6cc41e9145c08c20337712bf7d12e03be86e9b20a2642ff0bd7fc8485f0f8b59?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' loading='lazy' decoding='async'/>						<b class="fn"><a href="http://tms34020.uav.nl" class="url" rel="ugc external nofollow">Erik Theunissen</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6815"><time datetime="2023-01-13T23:06:23+01:00">January 13, 2023 at 23:06</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Great webpages, I loved working with TIGA. The remark ‚Just to make that clear: TIGA was not primarily meant to be a 3D accelerator‘ is correct, but it was possible to add the TMS34082 to perform hardware matrix multiplications needed for 3-D transformation. I used various TIGA cards for prototype ‚3-D‘ Avionics displays, this is document on <a href="https://tms34020.uav.nl" rel="nofollow ugc">https://tms34020.uav.nl</a><br />
+The TMS34020 board from Primary Image with the add-on board for hardware shaded polygon filling is also a very rare card. Quite costly at the time (1993)</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6815" data-commentid="6815" data-postid="2051" data-belowelement="div-comment-6815" data-respondelement="respond" data-replyto="Reply to Erik Theunissen" aria-label="Reply to Erik Theunissen">Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-6816" class="comment byuser comment-author-der-axel bypostauthor odd alt depth-2">
+			<article id="div-comment-6816" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" class="gravatar avatar avatar-34 um-avatar um-avatar-default" width="34" height="34" alt="Axel" data-default="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/img/default_avatar.jpg" onerror="if ( ! this.getAttribute('data-load-error') ){ this.setAttribute('data-load-error', '1');this.setAttribute('src', this.getAttribute('data-default'));}" loading="lazy" />						<b class="fn"><a href="https://www.geekdot.com/user/akesemu/">Axel</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6816"><time datetime="2023-01-14T13:12:46+01:00">January 14, 2023 at 13:12</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Hey Erik!<br />
+That&#8217;s some cool info and the page you&#8217;ve linked to is very interesting&#8230; great work back then! 👍<br />
+As for the 34082 FPU&#8230; you&#8217;ve seen my mention of the The Digital Micronics Vivid 24 at the bottom of this page, have you?<br />
+That supports<strong>two</strong> of these suckers (even 4 with add-ons) and thus made it one of <em>the ultimate TIGA dream boards</em> (IIRC there was a NuBus board also featureing 2 34082).</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6816" data-commentid="6816" data-postid="2051" data-belowelement="div-comment-6816" data-respondelement="respond" data-replyto="Reply to Axel" aria-label="Reply to Axel">Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-6818" class="comment even thread-even depth-1 parent">
+			<article id="div-comment-6818" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/6cc41e9145c08c20337712bf7d12e03be86e9b20a2642ff0bd7fc8485f0f8b59?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/6cc41e9145c08c20337712bf7d12e03be86e9b20a2642ff0bd7fc8485f0f8b59?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' loading='lazy' decoding='async'/>						<b class="fn"><a href="http://tms34020.uav.nl" class="url" rel="ugc external nofollow">Erik Theunissen</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6818"><time datetime="2023-01-14T22:37:40+01:00">January 14, 2023 at 22:37</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Axel, yes the Vivid24 is impressive too. I remember that on the Primary Image TIGA card you could also add a second 34082, and they offered a system with 4 of those cards in a single PC. Regarding requirement #2 of Real Men’s hardware: I looked up the 1994 invoice for the Primary Image TIGA board with the daughterboard that had the 4 Hitachi hi-speed shading processors (and the VRAM for the 24-bit frame-buffer behind the 8-bit TIGA overlay). It was Hfl 31.689,- for a single card! With the 1994 exchange rate of about 1.9 Hfl/U.S. $ that amounts to about 16.700,- U.S. $. In 1994 you could have bought a reasonable car for that amount.<br />
+I still have one working setup, I need to check whether I also have demo’s that work on a card that does not use the extended primitives for the shaded polygons.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6818" data-commentid="6818" data-postid="2051" data-belowelement="div-comment-6818" data-respondelement="respond" data-replyto="Reply to Erik Theunissen" aria-label="Reply to Erik Theunissen">Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-6862" class="comment odd alt depth-2">
+			<article id="div-comment-6862" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/abcc550cf1c9513fb5669ce1c4b065dadd5a39907af5bbe0773026e1a175c6bc?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/abcc550cf1c9513fb5669ce1c4b065dadd5a39907af5bbe0773026e1a175c6bc?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' loading='lazy' decoding='async'/>						<b class="fn"><a href="http://glizda.wordpress.com" class="url" rel="ugc external nofollow">GL1zdA</a></b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-6862"><time datetime="2023-02-22T09:07:18+01:00">February 22, 2023 at 9:07</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>Found your website recently, wanted to find more information about the Hitachi processors, and it doesn&#8217;t surprise me to find you here 😉 Is there any documentation about the Hitachi processors? I would really read more about them, but searching &#8220;Hitachi hi-speed shading&#8221; finds information about the Sega VDP1 at best.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-6862" data-commentid="6862" data-postid="2051" data-belowelement="div-comment-6862" data-respondelement="respond" data-replyto="Reply to GL1zdA" aria-label="Reply to GL1zdA">Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		<li id="comment-8228" class="comment even thread-odd thread-alt depth-1 parent">
+			<article id="div-comment-8228" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/30174badd6fe0280a3dd3402e0ee3497cd0e35968ac722d8de39b02ee1e71ef9?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/30174badd6fe0280a3dd3402e0ee3497cd0e35968ac722d8de39b02ee1e71ef9?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' loading='lazy' decoding='async'/>						<b class="fn">Rick Tillery</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-8228"><time datetime="2024-06-12T23:25:52+02:00">June 12, 2024 at 23:25</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>I can verify that the Vivid 24 supported up to four (4) TMS 34082 coprocessors. You can see the Mandelbrot test I wrote to demonstrate parallel processing for the SDK at <a href="http://aminet.net/package/gfx/misc/VividCompare" rel="nofollow ugc">http://aminet.net/package/gfx/misc/VividCompare</a>. (I&#8217;ve never located a copy of the SDK.)</p>
+<p>&#8220;If you do not own a Vivid 24, you can still run the program to check the speed of your Amiga and the program will compare it&#8217;s speed to the three co-processor-equipped versions of the Vivid 24.&#8221;</p>
+<p>That&#8217;s a bit more confusing than I meant it to be all those years ago. The &#8220;three co-processor-equipped versions&#8221; were the<br />
+* single TMS 34082<br />
+* double TMS 34082<br />
+* quad TMS 34082</p>
+<p>I guess I didn&#8217;t write a version to run on the TMS 34020 by itself, or along with the TMS 34082 renderings.</p>
+<p>Rick</p>
+<p>P.S. I also wrote the original version of the Digital Broadcaster editing software (shown in this bad scan of the original user manual: drive.google.com/file/d/1u6QLHye7GfKkJP8g_jN8V00K4C02EozN/view). I doubt that version of the software survives, but if you have any better screenshots of this, I would appreciate a copy. I know there was also a color foldout brochure, but I lost the one I had over the years in one of my moves.</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-8228" data-commentid="8228" data-postid="2051" data-belowelement="div-comment-8228" data-respondelement="respond" data-replyto="Reply to Rick Tillery" aria-label="Reply to Rick Tillery">Reply</a></div>			</article><!-- .comment-body -->
+		<ol class="children">
+		<li id="comment-10537" class="comment odd alt depth-2">
+			<article id="div-comment-10537" class="comment-body">
+				<footer class="comment-meta">
+					<div class="comment-author vcard">
+						<img alt='' src='https://secure.gravatar.com/avatar/30174badd6fe0280a3dd3402e0ee3497cd0e35968ac722d8de39b02ee1e71ef9?s=34&#038;d=retro&#038;r=g' srcset='https://secure.gravatar.com/avatar/30174badd6fe0280a3dd3402e0ee3497cd0e35968ac722d8de39b02ee1e71ef9?s=68&#038;d=retro&#038;r=g 2x' class='avatar avatar-34 photo' height='34' width='34' loading='lazy' decoding='async'/>						<b class="fn">Rick Tillery</b> <span class="says">says:</span>					</div><!-- .comment-author -->
+
+					<div class="comment-metadata">
+						<a href="https://www.geekdot.com/tiga-programming/#comment-10537"><time datetime="2026-04-16T02:56:44+02:00">April 16, 2026 at 2:56</time></a>					</div><!-- .comment-metadata -->
+
+									</footer><!-- .comment-meta -->
+
+				<div class="comment-content">
+					<p>As mentioned above, I have been looking for this flyer on the Digital Broadcaster 32 for almost 30 years, and I assumed it was long gone. But I stumbled on it this week! This was a weird multi-fold kind of thing with iridescent print, touting a full system, which we didn&#8217;t even sell at the time.</p>
+<p>Anyway, the reason I wanted to find it is because it is probably the only remaining color image of the editing interface I designed from scratch. The app you see was functional for record, playback, cut editing, and real-time scrubbing/jogging. I rearchitected the data flow of the hardware to optimize it (I should have patented those tricks) and enable the software driver to be much more optimal as well. We even coordinated a custom version of CrossDOS that had superior seek speed to the AmigaDOS driver, but didn&#8217;t have the 8.3 filename limitation. I made sure everything was perfectly frame accurate, and I even spent a lot of time tweaking the JPEG quantization tables to get the best quality I could for the bitrates the hard drives of the day could handle. But this was the first application of this scale I had ever worked on, and each feature was a lot of work for one novice programmer.</p>
+<p>DMI had been working with a company in Australia, who was creating a larger scale product around the Digitial Broadcaster 32, and they had a team of a few more experienced developers. When the boss saw they were further along, he negotiated getting a release of the software from them, and replaced my baby as the official release of the software. 🙁</p>
+<p>This is just the inner image: drive.google.com/file/d/1t8MG5b8YRJ7yxs_rKzVHR235kpxvQqo1/view</p>
+				</div><!-- .comment-content -->
+
+				<div class="reply"><a rel="nofollow" class="comment-reply-link" href="#comment-10537" data-commentid="10537" data-postid="2051" data-belowelement="div-comment-10537" data-respondelement="respond" data-replyto="Reply to Rick Tillery" aria-label="Reply to Rick Tillery">Reply</a></div>			</article><!-- .comment-body -->
+		</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	</ol><!-- .comment-list -->
+
+		
+		
+	
+		<div id="respond" class="comment-respond">
+		<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="/tiga-programming/#respond" style="display:none;">Cancel reply</a></small></h3><form action="https://www.geekdot.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Your email address will not be published.</span> <span class="required-field-message">Required fields are marked <span class="required">*</span></span></p><p class="comment-form-comment"><label for="comment">Comment <span class="required">*</span></label> <textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required></textarea></p><p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" type="text" value="" size="30" maxlength="245" autocomplete="name" required /></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" type="email" value="" size="30" maxlength="100" aria-describedby="email-notes" autocomplete="email" required /></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" type="url" value="" size="30" maxlength="200" autocomplete="url" /></p>
+<div class="gglcptch gglcptch_v2"><div id="gglcptch_recaptcha_2265611733" class="gglcptch_recaptcha"></div>
+				<noscript>
+					<div style="width: 302px;">
+						<div style="width: 302px; height: 422px; position: relative;">
+							<div style="width: 302px; height: 422px; position: absolute;">
+								<iframe src="https://www.google.com/recaptcha/api/fallback?k=6Lf7NzUUAAAAAAZ8F6QjVITdVu9SKMg7blCuqWRQ" frameborder="0" scrolling="no" style="width: 302px; height:422px; border-style: none;"></iframe>
+							</div>
+						</div>
+						<div style="border-style: none; bottom: 12px; left: 25px; margin: 0px; padding: 0px; right: 25px; background: #f9f9f9; border: 1px solid #c1c1c1; border-radius: 3px; height: 60px; width: 300px;">
+							<input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px !important; height: 40px !important; border: 1px solid #c1c1c1 !important; margin: 10px 25px !important; padding: 0px !important; resize: none !important;">
+						</div>
+					</div>
+				</noscript></div>
+<p class="wpgdprc-checkbox
+comment-form-wpgdprc">
+	<input type="checkbox" name="wpgdprc" id="wpgdprc" value="1"  />
+	<label for="wpgdprc">
+		By using this form you agree with the storage and handling of your data by this website. 
+<abbr class="wpgdprc-required" title="You need to accept this checkbox">*</abbr>
+	</label>
+</p>
+<p class="comment-subscription-form"><input type="checkbox" name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Notify me of follow-up comments by email.</label></p><p class="comment-subscription-form"><input type="checkbox" name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" /> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Notify me of new posts by email.</label></p><p class="form-submit"><input name="submit" type="submit" id="submit" class="submit" value="Post Comment" /> <input type='hidden' name='comment_post_ID' value='2051' id='comment_post_ID' />
+<input type='hidden' name='comment_parent' id='comment_parent' value='0' />
+</p><p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="55b633e0fe" /></p><p style="display: none !important;" class="akismet-fields-container" data-prefix="ak_"><label>&#916;<textarea name="ak_hp_textarea" cols="45" rows="8" maxlength="100"></textarea></label><input type="hidden" id="ak_js_1" name="ak_js" value="50"/><script>
+document.getElementById( "ak_js_1" ).setAttribute( "value", ( new Date() ).getTime() );
+</script>
+</p></form>	</div><!-- #respond -->
+	<p class="akismet_comment_form_privacy_notice">This site uses Akismet to reduce spam. <a href="https://akismet.com/privacy/" target="_blank" rel="nofollow noopener">Learn how your comment data is processed.</a></p>
+</div><!-- #comments -->
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+<div id="secondary">
+		<h2 class="site-description">home of real men&#039;s hardware</h2>
+	
+	
+		<div id="primary-sidebar" class="primary-sidebar widget-area" role="complementary">
+		
+		<aside id="recent-posts-2" class="widget widget_recent_entries">
+		<h1 class="widget-title">Recent Posts</h1><nav aria-label="Recent Posts">
+		<ul>
+											<li>
+					<a href="https://www.geekdot.com/atw800_2-faq/">ATW800/2 FAQ</a>
+											<span class="post-date">May 11, 2025</span>
+									</li>
+											<li>
+					<a href="https://www.geekdot.com/buy-an-atw800-2/">Buy an ATW800/2</a>
+											<span class="post-date">February 11, 2025</span>
+									</li>
+											<li>
+					<a href="https://www.geekdot.com/atw800_2/">ATW800/2</a>
+											<span class="post-date">July 7, 2024</span>
+									</li>
+											<li>
+					<a href="https://www.geekdot.com/tto68k/">Tto68k</a>
+											<span class="post-date">February 11, 2024</span>
+									</li>
+					</ul>
+
+		</nav></aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h1 class="widget-title">Recent Comments</h1><nav aria-label="Recent Comments"><ul id="recentcomments"><li class="recentcomments"><span class="comment-author-link"><a href="https://www.geekdot.com/user/akesemu/">Axel</a></span> on <a href="https://www.geekdot.com/buy-an-atw800-2/#comment-10555">Buy an ATW800/2</a></li><li class="recentcomments"><span class="comment-author-link">ThA</span> on <a href="https://www.geekdot.com/m8120/#comment-10551">Motorola M8120</a></li><li class="recentcomments"><span class="comment-author-link">Patrick Barnett</span> on <a href="https://www.geekdot.com/buy-an-atw800-2/#comment-10548">Buy an ATW800/2</a></li></ul></nav></aside><aside id="tag_cloud-3" class="widget widget_tag_cloud"><h1 class="widget-title">Tags</h1><nav aria-label="Tags"><div class="tagcloud"><ul class='wp-tag-cloud' role='list'>
+	<li><a href="https://www.geekdot.com/tag/68k/" class="tag-cloud-link tag-link-250 tag-link-position-1" style="font-size: 9.2068965517241pt;" aria-label="68k (4 items)">68k</a></li>
+	<li><a href="https://www.geekdot.com/tag/68030/" class="tag-cloud-link tag-link-247 tag-link-position-2" style="font-size: 9.2068965517241pt;" aria-label="68030 (4 items)">68030</a></li>
+	<li><a href="https://www.geekdot.com/tag/apple/" class="tag-cloud-link tag-link-182 tag-link-position-3" style="font-size: 11.01724137931pt;" aria-label="apple (6 items)">apple</a></li>
+	<li><a href="https://www.geekdot.com/tag/apple-ii/" class="tag-cloud-link tag-link-103 tag-link-position-4" style="font-size: 11.620689655172pt;" aria-label="Apple II (7 items)">Apple II</a></li>
+	<li><a href="https://www.geekdot.com/tag/arduino/" class="tag-cloud-link tag-link-76 tag-link-position-5" style="font-size: 8pt;" aria-label="arduino (3 items)">arduino</a></li>
+	<li><a href="https://www.geekdot.com/tag/arm/" class="tag-cloud-link tag-link-117 tag-link-position-6" style="font-size: 8pt;" aria-label="ARM (3 items)">ARM</a></li>
+	<li><a href="https://www.geekdot.com/tag/assembler/" class="tag-cloud-link tag-link-81 tag-link-position-7" style="font-size: 11.01724137931pt;" aria-label="assembler (6 items)">assembler</a></li>
+	<li><a href="https://www.geekdot.com/tag/atari/" class="tag-cloud-link tag-link-263 tag-link-position-8" style="font-size: 11.620689655172pt;" aria-label="Atari (7 items)">Atari</a></li>
+	<li><a href="https://www.geekdot.com/tag/basic/" class="tag-cloud-link tag-link-105 tag-link-position-9" style="font-size: 8pt;" aria-label="Basic (3 items)">Basic</a></li>
+	<li><a href="https://www.geekdot.com/tag/benchmark/" class="tag-cloud-link tag-link-195 tag-link-position-10" style="font-size: 9.2068965517241pt;" aria-label="benchmark (4 items)">benchmark</a></li>
+	<li><a href="https://www.geekdot.com/tag/blog/" class="tag-cloud-link tag-link-225 tag-link-position-11" style="font-size: 8pt;" aria-label="blog (3 items)">blog</a></li>
+	<li><a href="https://www.geekdot.com/tag/c004/" class="tag-cloud-link tag-link-136 tag-link-position-12" style="font-size: 8pt;" aria-label="C004 (3 items)">C004</a></li>
+	<li><a href="https://www.geekdot.com/tag/c64/" class="tag-cloud-link tag-link-106 tag-link-position-13" style="font-size: 10.172413793103pt;" aria-label="C64 (5 items)">C64</a></li>
+	<li><a href="https://www.geekdot.com/tag/cpld/" class="tag-cloud-link tag-link-142 tag-link-position-14" style="font-size: 9.2068965517241pt;" aria-label="CPLD (4 items)">CPLD</a></li>
+	<li><a href="https://www.geekdot.com/tag/demo/" class="tag-cloud-link tag-link-82 tag-link-position-15" style="font-size: 13.310344827586pt;" aria-label="demo (10 items)">demo</a></li>
+	<li><a href="https://www.geekdot.com/tag/design/" class="tag-cloud-link tag-link-84 tag-link-position-16" style="font-size: 9.2068965517241pt;" aria-label="design (4 items)">design</a></li>
+	<li><a href="https://www.geekdot.com/tag/diy/" class="tag-cloud-link tag-link-73 tag-link-position-17" style="font-size: 15.965517241379pt;" aria-label="DIY (17 items)">DIY</a></li>
+	<li><a href="https://www.geekdot.com/tag/dsm/" class="tag-cloud-link tag-link-80 tag-link-position-18" style="font-size: 8pt;" aria-label="DSM (3 items)">DSM</a></li>
+	<li><a href="https://www.geekdot.com/tag/dual-cpu/" class="tag-cloud-link tag-link-85 tag-link-position-19" style="font-size: 9.2068965517241pt;" aria-label="dual CPU (4 items)">dual CPU</a></li>
+	<li><a href="https://www.geekdot.com/tag/eisa/" class="tag-cloud-link tag-link-86 tag-link-position-20" style="font-size: 11.01724137931pt;" aria-label="EISA (6 items)">EISA</a></li>
+	<li><a href="https://www.geekdot.com/tag/graphics/" class="tag-cloud-link tag-link-113 tag-link-position-21" style="font-size: 10.172413793103pt;" aria-label="graphics (5 items)">graphics</a></li>
+	<li><a href="https://www.geekdot.com/tag/hack/" class="tag-cloud-link tag-link-88 tag-link-position-22" style="font-size: 14.637931034483pt;" aria-label="hack (13 items)">hack</a></li>
+	<li><a href="https://www.geekdot.com/tag/helios/" class="tag-cloud-link tag-link-114 tag-link-position-23" style="font-size: 13.310344827586pt;" aria-label="Helios (10 items)">Helios</a></li>
+	<li><a href="https://www.geekdot.com/tag/i860/" class="tag-cloud-link tag-link-78 tag-link-position-24" style="font-size: 15.603448275862pt;" aria-label="i860 (16 items)">i860</a></li>
+	<li><a href="https://www.geekdot.com/tag/inmos/" class="tag-cloud-link tag-link-92 tag-link-position-25" style="font-size: 12.827586206897pt;" aria-label="INMOS (9 items)">INMOS</a></li>
+	<li><a href="https://www.geekdot.com/tag/intel/" class="tag-cloud-link tag-link-124 tag-link-position-26" style="font-size: 8pt;" aria-label="Intel (3 items)">Intel</a></li>
+	<li><a href="https://www.geekdot.com/tag/interface/" class="tag-cloud-link tag-link-171 tag-link-position-27" style="font-size: 9.2068965517241pt;" aria-label="interface (4 items)">interface</a></li>
+	<li><a href="https://www.geekdot.com/tag/isa/" class="tag-cloud-link tag-link-108 tag-link-position-28" style="font-size: 13.793103448276pt;" aria-label="ISA (11 items)">ISA</a></li>
+	<li><a href="https://www.geekdot.com/tag/know-how/" class="tag-cloud-link tag-link-122 tag-link-position-29" style="font-size: 11.01724137931pt;" aria-label="Know How (6 items)">Know How</a></li>
+	<li><a href="https://www.geekdot.com/tag/linux/" class="tag-cloud-link tag-link-116 tag-link-position-30" style="font-size: 8pt;" aria-label="Linux (3 items)">Linux</a></li>
+	<li><a href="https://www.geekdot.com/tag/macintosh/" class="tag-cloud-link tag-link-245 tag-link-position-31" style="font-size: 11.01724137931pt;" aria-label="macintosh (6 items)">macintosh</a></li>
+	<li><a href="https://www.geekdot.com/tag/mandelbrot/" class="tag-cloud-link tag-link-79 tag-link-position-32" style="font-size: 11.01724137931pt;" aria-label="Mandelbrot (6 items)">Mandelbrot</a></li>
+	<li><a href="https://www.geekdot.com/tag/mips/" class="tag-cloud-link tag-link-109 tag-link-position-33" style="font-size: 10.172413793103pt;" aria-label="MIPS (5 items)">MIPS</a></li>
+	<li><a href="https://www.geekdot.com/tag/motorola/" class="tag-cloud-link tag-link-102 tag-link-position-34" style="font-size: 11.01724137931pt;" aria-label="motorola (6 items)">motorola</a></li>
+	<li><a href="https://www.geekdot.com/tag/parsytec/" class="tag-cloud-link tag-link-83 tag-link-position-35" style="font-size: 9.2068965517241pt;" aria-label="Parsytec (4 items)">Parsytec</a></li>
+	<li><a href="https://www.geekdot.com/tag/repair/" class="tag-cloud-link tag-link-99 tag-link-position-36" style="font-size: 9.2068965517241pt;" aria-label="repair (4 items)">repair</a></li>
+	<li><a href="https://www.geekdot.com/tag/reverse-engineer/" class="tag-cloud-link tag-link-100 tag-link-position-37" style="font-size: 12.827586206897pt;" aria-label="reverse engineer (9 items)">reverse engineer</a></li>
+	<li><a href="https://www.geekdot.com/tag/risc/" class="tag-cloud-link tag-link-214 tag-link-position-38" style="font-size: 10.172413793103pt;" aria-label="RISC (5 items)">RISC</a></li>
+	<li><a href="https://www.geekdot.com/tag/software/" class="tag-cloud-link tag-link-125 tag-link-position-39" style="font-size: 9.2068965517241pt;" aria-label="Software (4 items)">Software</a></li>
+	<li><a href="https://www.geekdot.com/tag/systems/" class="tag-cloud-link tag-link-126 tag-link-position-40" style="font-size: 8pt;" aria-label="Systems (3 items)">Systems</a></li>
+	<li><a href="https://www.geekdot.com/tag/tiga/" class="tag-cloud-link tag-link-112 tag-link-position-41" style="font-size: 9.2068965517241pt;" aria-label="TIGA (4 items)">TIGA</a></li>
+	<li><a href="https://www.geekdot.com/tag/tram/" class="tag-cloud-link tag-link-72 tag-link-position-42" style="font-size: 13.793103448276pt;" aria-label="TRAM (11 items)">TRAM</a></li>
+	<li><a href="https://www.geekdot.com/tag/transputer/" class="tag-cloud-link tag-link-70 tag-link-position-43" style="font-size: 22pt;" aria-label="Transputer (56 items)">Transputer</a></li>
+	<li><a href="https://www.geekdot.com/tag/workstation/" class="tag-cloud-link tag-link-254 tag-link-position-44" style="font-size: 9.2068965517241pt;" aria-label="workstation (4 items)">workstation</a></li>
+	<li><a href="https://www.geekdot.com/tag/x-window/" class="tag-cloud-link tag-link-93 tag-link-position-45" style="font-size: 8pt;" aria-label="X window (3 items)">X window</a></li>
+</ul>
+</div>
+</nav></aside><aside id="listcategorypostswidget-2" class="widget widget_listcategorypostswidget"><h1 class="widget-title"><a href="https://www.geekdot.com/category/news/">News</a></h1><ul class="lcp_catlist" id="lcp_instance_listcategorypostswidget-2"><li><a href="https://www.geekdot.com/pitram-ahead/">PiTRAM ahead&#8230;</a>  August 7, 2021</li><li><a href="https://www.geekdot.com/update-18-19-20/">Update 18, 19, 20&#8230;</a>  October 28, 2020</li><li><a href="https://www.geekdot.com/nothing-happening-in-2018/">Nothing happening in 2018?</a>  March 30, 2018</li></ul></aside>	</div><!-- #primary-sidebar -->
+	</div><!-- #secondary -->
+
+		</div><!-- #main -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- GeekDot Footer-Ad -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-5157310208398479"
+     data-ad-slot="7518653144"
+     data-ad-format="auto"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+		<footer id="colophon" class="site-footer" role="contentinfo">
+
+			
+			<div class="site-info">				
+				(C) 2004-2026 by Axel Muhr			</div><!-- .site-info -->
+		</footer><!-- #colophon -->
+	</div><!-- #page -->
+
+	
+<div id="um_upload_single" style="display:none;"></div>
+
+<div id="um_view_photo" style="display:none;">
+	<a href="javascript:void(0);" data-action="um_remove_modal" class="um-modal-close" aria-label="Close view photo modal">
+		<i class="um-faicon-times"></i>
+	</a>
+
+	<div class="um-modal-body photo">
+		<div class="um-modal-photo"></div>
+	</div>
+</div>
+<script type="speculationrules">
+{"prefetch":[{"source":"document","where":{"and":[{"href_matches":"/*"},{"not":{"href_matches":["/wp-*.php","/wp-admin/*","/wp-content/uploads/*","/wp-content/*","/wp-content/plugins/*","/wp-content/themes/twentyfourteen-child/*","/wp-content/themes/twentyfourteen/*","/*\\?(.+)"]}},{"not":{"selector_matches":"a[rel~=\"nofollow\"]"}},{"not":{"selector_matches":".no-prefetch, .no-prefetch a"}}]},"eagerness":"conservative"}]}
+</script>
+
+<script type="text/javascript" id="bbp-swap-no-js-body-class">
+	document.body.className = document.body.className.replace( 'bbp-no-js', 'bbp-js' );
+</script>
+
+<!--googleoff: all--><div id="cookie-law-info-bar" data-nosnippet="true"><span><div class="cli-bar-container cli-style-v2"><div class="cli-bar-message">We use cookies on our website to give you the most relevant experience by remembering your preferences and repeat visits. By clicking “Accept”, you consent to the use of ALL the cookies.</br><div class="wt-cli-ccpa-element"> <a style="color:#333333" class="wt-cli-ccpa-opt-out">Do not sell my personal information</a>.</div></div><div class="cli-bar-btn_container"><a role='button' class="medium cli-plugin-button cli-plugin-main-button cli_settings_button" style="margin:0px 10px 0px 5px">Settings</a><a role='button' data-cli_action="accept" id="cookie_action_close_header" class="medium cli-plugin-button cli-plugin-main-button cookie_action_close_header cli_action_button wt-cli-accept-btn">Accept</a></div></div></span></div><div id="cookie-law-info-again" data-nosnippet="true"><span id="cookie_hdr_showagain">Privacy &amp; Cookies Policy</span></div><div class="cli-modal" data-nosnippet="true" id="cliSettingsPopup" tabindex="-1" role="dialog" aria-labelledby="cliSettingsPopup" aria-hidden="true">
+  <div class="cli-modal-dialog" role="document">
+	<div class="cli-modal-content cli-bar-popup">
+		  <button type="button" class="cli-modal-close" id="cliModalClose">
+			<svg class="" viewBox="0 0 24 24"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path><path d="M0 0h24v24h-24z" fill="none"></path></svg>
+			<span class="wt-cli-sr-only">Close</span>
+		  </button>
+		  <div class="cli-modal-body">
+			<div class="cli-container-fluid cli-tab-container">
+	<div class="cli-row">
+		<div class="cli-col-12 cli-align-items-stretch cli-px-0">
+			<div class="cli-privacy-overview">
+				<h4>Privacy Overview</h4>				<div class="cli-privacy-content">
+					<div class="cli-privacy-content-text">This website uses cookies to improve your experience while you navigate through the website. Out of these, the cookies that are categorized as necessary are stored on your browser as they are essential for the working of basic functionalities of the website. We also use third-party cookies that help us analyze and understand how you use this website. These cookies will be stored in your browser only with your consent. You also have the option to opt-out of these cookies. But opting out of some of these cookies may affect your browsing experience.</div>
+				</div>
+				<a class="cli-privacy-readmore" aria-label="Show more" role="button" data-readmore-text="Show more" data-readless-text="Show less"></a>			</div>
+		</div>
+		<div class="cli-col-12 cli-align-items-stretch cli-px-0 cli-tab-section-container">
+												<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="necessary" data-toggle="cli-toggle-tab">
+								Necessary							</a>
+															<div class="wt-cli-necessary-checkbox">
+									<input type="checkbox" class="cli-user-preference-checkbox"  id="wt-cli-checkbox-necessary" data-id="checkbox-necessary" checked="checked"  />
+									<label class="form-check-label" for="wt-cli-checkbox-necessary">Necessary</label>
+								</div>
+								<span class="cli-necessary-caption">Always Enabled</span>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="necessary">
+								<div class="wt-cli-cookie-description">
+									Necessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal information.								</div>
+							</div>
+						</div>
+					</div>
+																	<div class="cli-tab-section">
+						<div class="cli-tab-header">
+							<a role="button" tabindex="0" class="cli-nav-link cli-settings-mobile" data-target="non-necessary" data-toggle="cli-toggle-tab">
+								Non-necessary							</a>
+															<div class="cli-switch">
+									<input type="checkbox" id="wt-cli-checkbox-non-necessary" class="cli-user-preference-checkbox"  data-id="checkbox-non-necessary" checked='checked' />
+									<label for="wt-cli-checkbox-non-necessary" class="cli-slider" data-cli-enable="Enabled" data-cli-disable="Disabled"><span class="wt-cli-sr-only">Non-necessary</span></label>
+								</div>
+													</div>
+						<div class="cli-tab-content">
+							<div class="cli-tab-pane cli-fade" data-id="non-necessary">
+								<div class="wt-cli-cookie-description">
+									Any cookies that may not be particularly necessary for the website to function and is used specifically to collect user personal data via analytics, ads, other embedded contents are termed as non-necessary cookies. It is mandatory to procure user consent prior to running these cookies on your website.								</div>
+							</div>
+						</div>
+					</div>
+										</div>
+	</div>
+</div>
+		  </div>
+		  <div class="cli-modal-footer">
+			<div class="wt-cli-element cli-container-fluid cli-tab-container">
+				<div class="cli-row">
+					<div class="cli-col-12 cli-align-items-stretch cli-px-0">
+						<div class="cli-tab-footer wt-cli-privacy-overview-actions">
+						
+															<a id="wt-cli-privacy-save-btn" role="button" tabindex="0" data-cli-action="accept" class="wt-cli-privacy-btn cli_setting_save_button wt-cli-privacy-accept-btn cli-btn">SAVE &amp; ACCEPT</a>
+													</div>
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+  </div>
+</div>
+<div class="cli-modal-backdrop cli-fade cli-settings-overlay"></div>
+<div class="cli-modal-backdrop cli-fade cli-popupbar-overlay"></div>
+<!--googleon: all-->	<div style="display:none">
+			<div class="grofile-hash-map-57cdf263d47ea204f895c586eb45cc29">
+		</div>
+		<div class="grofile-hash-map-5ead41dd1b1f779ddd5a9b67d58e9c9c">
+		</div>
+		<div class="grofile-hash-map-7dddc882a0620ddcba395513574dbe18">
+		</div>
+		<div class="grofile-hash-map-28af3f9ce25950e8784acabaaf65a6c1">
+		</div>
+		<div class="grofile-hash-map-9467cb1aa5329f4b9d400ced2602b6b9">
+		</div>
+		<div class="grofile-hash-map-a2b4f05beb7de299818f305436d884c9">
+		</div>
+		</div>
+		<script src="https://www.geekdot.com/wp-content/plugins/progress-bar-wp/assets/js/jquery.meanmenu.js?ver=6.9.4" id="progress_wp_br-home-js-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/progress-bar-wp/assets/js/wow.min.js?ver=6.9.4" id="pb_wp_wow-min-js-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/progress-bar-wp/assets/js/jquery.scrollUp.min.js?ver=6.9.4" id="pbwp_scroll-js-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/progress-bar-wp/assets/js/waypoints.min.js?ver=6.9.4" id="pbwp_way-min-js-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/progress-bar-wp/assets/js/main.js?ver=6.9.4" id="pbwp_main-min-js-js"></script>
+<script src="https://www.geekdot.com/wp-includes/js/comment-reply.min.js?ver=6.9.4" id="comment-reply-js" async data-wp-strategy="async" fetchpriority="low"></script>
+<script src="https://secure.gravatar.com/js/gprofiles.js?ver=202617" id="grofiles-cards-js"></script>
+<script id="wpgroho-js-extra">
+var WPGroHo = {"my_hash":""};
+//# sourceURL=wpgroho-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/jetpack/modules/wpgroho.js?ver=15.7.1" id="wpgroho-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/google-site-kit/dist/assets/js/googlesitekit-consent-mode-bc2e26cfa69fcd4a8261.js" id="googlesitekit-consent-mode-js"></script>
+<script id="gdatt-attachments-js-extra">
+var gdbbPressAttachmentsInit = {"max_files":"4","are_you_sure":"This operation is not reversible. Are you sure?"};
+//# sourceURL=gdatt-attachments-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/gd-bbpress-attachments/js/front.min.js?ver=4.9.4_b2840_free" id="gdatt-attachments-js"></script>
+<script src="https://www.geekdot.com/wp-includes/js/underscore.min.js?ver=1.13.7" id="underscore-js"></script>
+<script id="wp-util-js-extra">
+var _wpUtilSettings = {"ajax":{"url":"/wp-admin/admin-ajax.php"}};
+//# sourceURL=wp-util-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-includes/js/wp-util.min.js?ver=6.9.4" id="wp-util-js"></script>
+<script src="https://www.geekdot.com/wp-includes/js/dist/hooks.min.js?ver=dd5603f07f9220ed27f1" id="wp-hooks-js"></script>
+<script src="https://www.geekdot.com/wp-includes/js/dist/i18n.min.js?ver=c26c3dc7bed366793375" id="wp-i18n-js"></script>
+<script id="wp-i18n-js-after">
+wp.i18n.setLocaleData( { 'text direction\u0004ltr': [ 'ltr' ] } );
+//# sourceURL=wp-i18n-js-after
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/tipsy/tipsy.min.js?ver=1.0.0a" id="um_tipsy-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/um-confirm/um-confirm.min.js?ver=1.0" id="um_confirm-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/um-notice/um-notice.min.js?ver=1.0" id="um_notice-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/pickadate/picker.min.js?ver=3.6.2" id="um_datetime-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/pickadate/picker.date.min.js?ver=3.6.2" id="um_datetime_date-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/pickadate/picker.time.min.js?ver=3.6.2" id="um_datetime_time-js"></script>
+<script id="um_common-js-extra">
+var um_common_variables = {"locale":"en_US"};
+var um_common_variables = {"locale":"en_US"};
+//# sourceURL=um_common-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/common.min.js?ver=2.11.3" id="um_common-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/cropper/cropper.min.js?ver=1.6.1" id="um_crop-js"></script>
+<script id="um_frontend_common-js-extra">
+var um_frontend_common_variables = [];
+//# sourceURL=um_frontend_common-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/common-frontend.min.js?ver=2.11.3" id="um_frontend_common-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/um-modal.min.js?ver=2.11.3" id="um_modal-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/jquery-form/jquery-form.min.js?ver=2.11.3" id="um_jquery_form-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/fileupload/fileupload.js?ver=2.11.3" id="um_fileupload-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/um-functions.min.js?ver=2.11.3" id="um_functions-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/um-responsive.min.js?ver=2.11.3" id="um_responsive-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/um-conditional.min.js?ver=2.11.3" id="um_conditional-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/select2/select2.full.min.js?ver=4.0.13" id="select2-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/select2/i18n/en.js?ver=4.0.13" id="um_select2_locale-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/libs/raty/um-raty.min.js?ver=2.6.0" id="um_raty-js"></script>
+<script id="um_scripts-js-extra">
+var um_scripts = {"max_upload_size":"2097152","nonce":"4f7eb12f24"};
+//# sourceURL=um_scripts-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/um-scripts.min.js?ver=2.11.3" id="um_scripts-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/um-profile.min.js?ver=2.11.3" id="um_profile-js"></script>
+<script src="https://www.geekdot.com/wp-content/plugins/ultimate-member/assets/js/um-account.min.js?ver=2.11.3" id="um_account-js"></script>
+<script id="jetpack-stats-js-before">
+_stq = window._stq || [];
+_stq.push([ "view", {"v":"ext","blog":"90489069","post":"2051","tz":"2","srv":"www.geekdot.com","j":"1:15.7.1"} ]);
+_stq.push([ "clickTrackerInit", "90489069", "2051" ]);
+//# sourceURL=jetpack-stats-js-before
+</script>
+<script src="https://stats.wp.com/e-202617.js" id="jetpack-stats-js" defer data-wp-strategy="defer"></script>
+<script id="wp-consent-api-js-extra">
+var consent_api = {"consent_type":"","waitfor_consent_hook":"","cookie_expiration":"30","cookie_prefix":"wp_consent","services":[]};
+//# sourceURL=wp-consent-api-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/wp-consent-api/assets/js/wp-consent-api.min.js?ver=2.0.1" id="wp-consent-api-js"></script>
+<script defer src="https://www.geekdot.com/wp-content/plugins/akismet/_inc/akismet-frontend.js?ver=1777080783" id="akismet-frontend-js"></script>
+<script data-cfasync="false" async="async" defer="defer" src="https://www.google.com/recaptcha/api.js?render=explicit&amp;ver=1.87" id="gglcptch_api-js"></script>
+<script id="gglcptch_script-js-extra">
+var gglcptch = {"options":{"version":"v2","sitekey":"6Lf7NzUUAAAAAAZ8F6QjVITdVu9SKMg7blCuqWRQ","error":"\u003Cstrong\u003EWarning\u003C/strong\u003E:&nbsp;More than one reCAPTCHA has been found in the current form. Please remove all unnecessary reCAPTCHA fields to make it work properly.","disable":0,"theme":"light"},"vars":{"visibility":false}};
+//# sourceURL=gglcptch_script-js-extra
+</script>
+<script src="https://www.geekdot.com/wp-content/plugins/google-captcha/js/script.js?ver=1.87" id="gglcptch_script-js"></script>
+<script id="wp-emoji-settings" type="application/json">
+{"baseUrl":"https://s.w.org/images/core/emoji/17.0.2/72x72/","ext":".png","svgUrl":"https://s.w.org/images/core/emoji/17.0.2/svg/","svgExt":".svg","source":{"concatemoji":"https://www.geekdot.com/wp-includes/js/wp-emoji-release.min.js?ver=6.9.4"}}
+</script>
+<script type="module">
+/*! This file is auto-generated */
+const a=JSON.parse(document.getElementById("wp-emoji-settings").textContent),o=(window._wpemojiSettings=a,"wpEmojiSettingsSupports"),s=["flag","emoji"];function i(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function c(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0);const a=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data);return t.every((e,t)=>e===a[t])}function p(e,t){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var n=e.getImageData(16,16,1,1);for(let e=0;e<n.data.length;e++)if(0!==n.data[e])return!1;return!0}function u(e,t,n,a){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\udde8\ud83c\uddf6","\ud83c\udde8\u200b\ud83c\uddf6")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!a(e,"\ud83e\u1fac8")}return!1}function f(e,t,n,a){let r;const o=(r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):document.createElement("canvas")).getContext("2d",{willReadFrequently:!0}),s=(o.textBaseline="top",o.font="600 32px Arial",{});return e.forEach(e=>{s[e]=t(o,e,n,a)}),s}function r(e){var t=document.createElement("script");t.src=e,t.defer=!0,document.head.appendChild(t)}a.supports={everything:!0,everythingExceptFlag:!0},new Promise(t=>{let n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),c.toString(),p.toString()].join(",")+"));",a=new Blob([e],{type:"text/javascript"});const r=new Worker(URL.createObjectURL(a),{name:"wpTestEmojiSupports"});return void(r.onmessage=e=>{i(n=e.data),r.terminate(),t(n)})}catch(e){}i(n=f(s,u,c,p))}t(n)}).then(e=>{for(const n in e)a.supports[n]=e[n],a.supports.everything=a.supports.everything&&a.supports[n],"flag"!==n&&(a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&a.supports[n]);var t;a.supports.everythingExceptFlag=a.supports.everythingExceptFlag&&!a.supports.flag,a.supports.everything||((t=a.source||{}).concatemoji?r(t.concatemoji):t.wpemoji&&t.twemoji&&(r(t.twemoji),r(t.wpemoji)))});
+//# sourceURL=https://www.geekdot.com/wp-includes/js/wp-emoji-loader.min.js
+</script>
+</body>
+</html>
